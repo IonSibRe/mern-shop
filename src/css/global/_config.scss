@@ -1,0 +1,42 @@
+// ============= Imports =============
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+
+// ============= Variables =============
+
+// Typography
+$h1-size: 7rem;
+$h2-size: 3rem;
+$h3-size: 2.5rem;
+$h4-size: 2rem;
+
+$p-size: 1.5rem;
+
+$default-font-family: "Open Sans", sans-serif;
+
+// ============= Default Resets =============
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-family: $default-font-family;
+	overflow-x: hidden;
+}
+
+img {
+	width: 100%;
+}
+
+ul {
+	list-style-type: none;
+}
+
+a {
+	text-decoration: none;
+}
