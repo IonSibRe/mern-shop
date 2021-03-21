@@ -1,7 +1,10 @@
 // ============= Imports =============
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
 
 // ============= Variables =============
+
+// Layout
+$default-width: 1300px;
 
 // Typography
 $h1-size: 7rem;
@@ -11,7 +14,15 @@ $h4-size: 2rem;
 
 $p-size: 1.5rem;
 
+$nav-link-size: 1.75rem;
+
 $default-font-family: "Open Sans", sans-serif;
+
+// Colors
+$body-bg: #f4f4f4;
+$default-dark-color: #333;
+$default-light-color: #fff;
+$btn-bg-color: #266cfb;
 
 // ============= Default Resets =============
 * {
@@ -27,6 +38,7 @@ html {
 body {
 	font-family: $default-font-family;
 	overflow-x: hidden;
+	background-color: $body-bg;
 }
 
 img {

@@ -1,0 +1,124 @@
+@import "../global/config";
+
+.nav {
+	width: 100vw;
+	background-color: #fff;
+}
+
+.nav-upper-inner,
+.nav-lower-inner {
+	width: $default-width;
+	margin: 0 auto;
+}
+
+// Upper
+.nav-upper {
+	padding: 1rem 0;
+	border-top: 1px solid #ccc;
+}
+
+.nav-upper-inner {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+// Lower
+.nav-lower {
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+
+// ================= Upper =================
+// Logo
+.nav-logo-wrap {
+	display: flex;
+	align-items: center;
+
+	.nav-logo-title {
+		font-size: $h2-size + 1.25rem;
+		color: $default-dark-color;
+	}
+
+	.nav-logo-img {
+		width: 70px;
+	}
+}
+
+// Search
+.nav-input {
+	padding: 1rem 2rem;
+	border: 1px solid #ccc;
+	border-right: none;
+	outline: none;
+}
+
+.nav-sub-btn {
+	padding: 1rem;
+	font-weight: 700;
+	color: $default-light-color;
+	background-color: $btn-bg-color;
+	border: 1px solid $btn-bg-color;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+// User
+.nav-upper-link {
+	margin: 0 1rem;
+	font-size: $p-size;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: $default-dark-color;
+}
+
+.nav-upper-i {
+	margin-right: 0.5rem;
+}
+
+// ================= Lower =================
+.nav-lower-ul {
+	display: flex;
+	justify-content: center;
+
+	.nav-lower-li {
+		margin: 1rem;
+	}
+
+	.nav-lower-link {
+		font-size: $nav-link-size;
+		letter-spacing: 0.25rem;
+		text-transform: uppercase;
+		color: $default-dark-color;
+		transition: 0.2s color ease-in-out;
+
+		&:hover {
+			color: #007bff;
+		}
+	}
+}
+
+// Media Queries
+@media screen and (max-width: $default-width) {
+	.nav-upper-inner,
+	.nav-lower-inner {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.nav-upper-inner {
+		flex-direction: column;
+	}
+
+	.nav-upper-inner > * {
+		margin: 1rem 0;
+	}
+}
+
+@media screen and (max-width: 414px) {
+	.nav-lower-ul {
+		flex-direction: column;
+		align-items: center;
+	}
+}
