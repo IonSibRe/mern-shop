@@ -1,4 +1,5 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import {
 	home_slider_img_1,
 	home_slider_img_2,
@@ -28,19 +29,12 @@ const showcaseData = [
 
 const MainShowcase = () => {
 	const [current, setCurrent] = useState(1);
-	const activeSlide = useRef(null);
-
-	console.log(showcaseData.length);
-
-	const nextSlide = () => {
-		current <= showcaseData.length - 1
-			? setCurrent(current + 1)
-			: setCurrent(1);
-	};
 
 	useEffect(() => {
 		const slideInterval = setInterval(() => {
-			nextSlide();
+			current <= showcaseData.length - 1
+				? setCurrent(current + 1)
+				: setCurrent(1);
 		}, 5000);
 		return () => clearInterval(slideInterval);
 	});
@@ -50,34 +44,40 @@ const MainShowcase = () => {
 			<div className="slider">
 				{showcaseData.map((slide) => {
 					const { id, img, title, desc } = slide;
+
+					const imgStyling = {
+						background: `url(${img}) no-repeat
+							center center/cover`,
+					};
+
 					return (
 						<div
 							className={`slide ${
 								id === current ? "current" : ""
 							}`}
-							ref={id === current ? activeSlide : null}
 							key={id}
+							style={imgStyling}
 						>
-							<div className="content">
-								<div className="slide-text-wrap">
-									<h2 className="slide-h2">{title}</h2>
-									<p className="slide-p">{desc}</p>
+							<div className="slide-text-wrap">
+								<div className="slide-text-inner-wrap">
+									<h2 className="slide-title">{title}</h2>
+									<p className="slide-desc">{desc}</p>
+									<Link to="/products" className="slide-link">
+										shop now
+									</Link>
 								</div>
-							</div>
-							<div className="slide-img-wrap">
-								<img src={img} alt="#" className="slide-img" />
 							</div>
 						</div>
 					);
 				})}
 				<div className="dots">
 					{showcaseData.map((slide) => {
-						const { id } = slide;
 						return (
 							<span
-								key={id}
+								key={slide.id}
+								onClick={() => setCurrent(slide.id)}
 								className={`dot ${
-									id === current ? "active" : ""
+									slide.id === current ? "active" : ""
 								}`}
 							></span>
 						);

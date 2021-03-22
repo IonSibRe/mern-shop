@@ -1,5 +1,6 @@
 @import "./global/config";
 
+// ====================== Main Showcase ======================
 .slider {
 	height: 50vh;
 	width: 100vw;
@@ -9,69 +10,71 @@
 .slide {
 	position: absolute;
 	top: 0;
-	left: 50%;
+	left: 0;
 	height: 100%;
-	width: $default-width;
-	display: flex;
-	justify-content: space-between;
-	transform: translateX(-50%);
+	width: 100%;
 	transition: all 0.5s ease-in-out;
 	opacity: 0;
 
-	.content {
-		flex: 1;
+	.slide-text-wrap {
+		height: 100%;
+		width: $default-width;
+		margin: 0 auto;
 
-		.slide-text-wrap {
-			margin: 5rem 0 0 3rem;
+		.slide-text-inner-wrap {
+			width: 500px;
+			margin: 8rem 0 0 5rem;
 		}
 
-		.slide-text-wrap > * {
-			margin-bottom: 1.5rem;
-		}
-
-		.slide-h2 {
+		.slide-title {
 			font-size: $h2-size + 1.5rem;
 			color: $default-dark-color;
 			text-transform: capitalize;
 		}
 
-		.slide-p {
+		.slide-desc {
+			margin: 2rem 0 4rem 0;
 			font-size: $p-size + 1rem;
+			color: $default-dark-color;
 			text-transform: capitalize;
-			margin-bottom: 4rem;
 		}
-	}
 
-	.slide-img-wrap {
-		flex: 1;
-		text-align: center;
-	}
+		.slide-link {
+			display: inline-block;
+			padding: 1rem 2rem;
+			font-size: $link-size;
+			font-weight: 600;
+			text-transform: uppercase;
+			border-radius: 5px;
+			color: $default-light-color;
+			background-color: $btn-bg-color;
+			transition: all 0.25s ease-in-out;
 
-	.slide-img {
-		width: 500px;
+			&:hover {
+				background-color: #333;
+			}
+		}
 	}
 }
 
 .slide.current {
 	opacity: 1;
+	z-index: 1;
 }
 
-.slide.current .content {
-	opacity: 1;
-}
-
-// Dots
 .dots {
 	position: absolute;
 	bottom: 1.5rem;
 	left: 50%;
-	transform: translate(-50%, 0);
+	transform: translateX(-50%);
+	z-index: 2;
 
 	.dot {
 		margin: 0 1rem;
 		padding: 0.25rem 1rem;
 		border-radius: 50%;
 		background-color: #333;
+		cursor: pointer;
 	}
 
 	.active {
