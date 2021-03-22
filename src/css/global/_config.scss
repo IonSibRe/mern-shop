@@ -25,6 +25,23 @@ $default-dark-color: #333;
 $default-light-color: #fff;
 $btn-bg-color: #266cfb;
 
+// ============= Mixins =============
+@mixin btn-default {
+	display: inline-block;
+	padding: 1rem 2rem;
+	font-size: $link-size;
+	font-weight: 600;
+	text-transform: uppercase;
+	border-radius: 5px;
+	color: $default-light-color;
+	background-color: $btn-bg-color;
+	transition: all 0.25s ease-in-out;
+
+	&:hover {
+		background-color: #333;
+	}
+}
+
 // ============= Default Resets =============
 * {
 	box-sizing: border-box;

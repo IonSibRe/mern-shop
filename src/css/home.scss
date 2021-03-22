@@ -40,19 +40,7 @@
 		}
 
 		.slide-link {
-			display: inline-block;
-			padding: 1rem 2rem;
-			font-size: $link-size;
-			font-weight: 600;
-			text-transform: uppercase;
-			border-radius: 5px;
-			color: $default-light-color;
-			background-color: $btn-bg-color;
-			transition: all 0.25s ease-in-out;
-
-			&:hover {
-				background-color: #333;
-			}
+			@include btn-default;
 		}
 	}
 }
@@ -79,5 +67,148 @@
 
 	.active {
 		background-color: $btn-bg-color;
+	}
+}
+
+// ====================== Info Box ======================
+.info-box {
+	width: $default-width;
+	margin: 4rem auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	justify-content: space-around;
+	border: 1px solid #ccc;
+
+	.info-single-inner-box {
+		margin: 3rem 0;
+		text-align: center;
+		border-right: 1px solid #ccc;
+
+		.info-icon {
+			font-size: 2rem;
+		}
+
+		.info-title {
+			margin: 0.5rem 0;
+			font-size: $h3-size - 0.5rem;
+			text-transform: capitalize;
+			color: $default-dark-color;
+		}
+
+		.info-desc {
+			font-size: $p-size;
+			text-transform: capitalize;
+			color: $default-dark-color;
+		}
+	}
+
+	.info-single-box:last-child .info-single-inner-box {
+		border-right: none;
+	}
+}
+
+// ====================== Featured Products ======================
+.fp {
+	width: $default-width;
+	margin: 0 auto;
+}
+
+.fp-title-wrap {
+	margin: 2rem 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	.fp-title {
+		margin-right: 3rem;
+		font-size: $h2-size;
+		font-weight: 400;
+		color: $default-dark-color;
+	}
+
+	.fp-row {
+		height: 1px;
+		width: 72.5%;
+		background-color: #ccc;
+	}
+
+	.fp-signs {
+		margin-left: 3rem;
+		font-size: 1.25rem;
+		color: #ccc;
+
+		// Space between signs
+		.fp-sign:last-child {
+			margin-left: 1rem;
+		}
+	}
+}
+
+.fp-showcase-wrap {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 20px;
+
+	.fp-showcase-item {
+		box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+	}
+
+	.fp-showcase-text-wrap {
+		text-align: center;
+
+		.fp-showcase-item-title {
+			font-size: $h4-size - 0.25rem;
+			font-weight: 400;
+			color: $default-dark-color;
+		}
+
+		.fp-showcase-item-price {
+			margin: 0.75rem 0 1.25rem 0;
+			font-size: $h4-size - 0.25rem;
+			color: $default-dark-color;
+		}
+
+		.fp-showcase-item-link {
+			@include btn-default;
+			margin-bottom: 2rem;
+			padding: 0.75rem 1.5rem;
+		}
+	}
+}
+
+// ====================== Media Queries ======================
+@media screen and (max-width: 1300px) {
+	// Main Main Showcase
+	.slide .slide-text-wrap {
+		width: 100%;
+	}
+
+	.info-box {
+		width: 100%;
+
+		.info-single-inner-box {
+			border: none;
+		}
+	}
+
+	.fp {
+		width: 100%;
+	}
+
+	.fp-title-wrap {
+		flex-direction: column;
+		justify-content: center;
+
+		.fp-title {
+			margin-bottom: 1rem;
+		}
+
+		.fp-row {
+			width: 80%;
+		}
+
+		.fp-signs {
+			display: none;
+		}
 	}
 }
