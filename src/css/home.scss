@@ -111,10 +111,12 @@
 .fp {
 	width: $default-width;
 	margin: 0 auto;
+	overflow: hidden;
 }
 
+// Title
 .fp-title-wrap {
-	margin: 2rem 0;
+	margin: 1rem 0;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -128,14 +130,25 @@
 
 	.fp-row {
 		height: 1px;
-		width: 72.5%;
+		width: 70%;
 		background-color: #ccc;
 	}
 
-	.fp-signs {
+	.fp-btns {
 		margin-left: 3rem;
 		font-size: 1.25rem;
 		color: #ccc;
+
+		.fp-btn {
+			border: none;
+			outline: none;
+			background-color: transparent;
+			cursor: pointer;
+		}
+
+		.disabled {
+			pointer-events: none;
+		}
 
 		// Space between signs
 		.fp-sign:last-child {
@@ -144,12 +157,21 @@
 	}
 }
 
+// Slider
 .fp-showcase-wrap {
-	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	gap: 20px;
+	margin-bottom: 150rem;
+	width: 100%;
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+
+	.fp-showcase-inner-wrap {
+		margin: 0.25rem 0 2rem 0.25rem;
+		display: flex;
+	}
 
 	.fp-showcase-item {
+		min-width: 250px;
+		margin-right: 2rem;
 		box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
 	}
 
