@@ -13,7 +13,11 @@ import featured_products_img_6 from "../assets/img/home/featured-products-img-6.
 import featured_products_img_7 from "../assets/img/home/featured-products-img-7.jpg";
 import featured_products_img_8 from "../assets/img/home/featured-products-img-8.jpg";
 
+// Product Card
+import product_card_img from "../assets/img/home/product-card-img.jpg";
+
 export { home_slider_img_1, home_slider_img_2, home_slider_img_3 };
+
 export {
 	featured_products_img_1,
 	featured_products_img_2,
@@ -24,3 +28,5 @@ export {
 	featured_products_img_7,
 	featured_products_img_8,
 };
+
+export { product_card_img };

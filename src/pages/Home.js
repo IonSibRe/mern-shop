@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import MainShowcase from "../components/home/MainShowcase";
 import InfoBox from "../components/home/InfoBox";
 import FeaturedProducts from "../components/home/FeaturedProducts";
+import ProductCard from "../components/home/ProductCard";
 import "../css/home.scss";
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
 			<MainShowcase />
 			<InfoBox />
 			<FeaturedProducts />
+			<ProductCard />
 		</>
 	);
 };

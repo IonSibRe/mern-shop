@@ -159,20 +159,29 @@
 
 // Slider
 .fp-showcase-wrap {
-	margin-bottom: 150rem;
 	width: 100%;
 	overflow-x: hidden;
 	scroll-behavior: smooth;
 
 	.fp-showcase-inner-wrap {
-		margin: 0.25rem 0 2rem 0.25rem;
+		width: 100%;
+		margin-bottom: 2rem;
 		display: flex;
 	}
 
+	.fp-showcase-inner-wrap::after {
+		content: "";
+		border-right: 20px solid transparent;
+	}
+
 	.fp-showcase-item {
-		min-width: 250px;
-		margin-right: 2rem;
-		box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+		min-width: 305px; // Width of container / items to display
+		margin-right: 20px;
+		border: 1px solid #ccc;
+	}
+
+	.fp-showcase-item:last-child {
+		margin-right: 0;
 	}
 
 	.fp-showcase-text-wrap {
@@ -194,6 +203,47 @@
 			@include btn-default;
 			margin-bottom: 2rem;
 			padding: 0.75rem 1.5rem;
+		}
+	}
+}
+
+// Product Card
+.product-card {
+	height: 400px;
+	width: $default-width;
+	margin: 5rem auto;
+	display: flex;
+	align-items: center;
+
+	.product-text-wrap {
+		margin-left: 6rem;
+
+		.product-card-title {
+			margin-bottom: 1rem;
+			font-size: $h2-size + 0.75rem;
+			font-weight: 400;
+			color: $default-dark-color;
+
+			& > strong {
+				font-weight: 600;
+			}
+		}
+
+		.product-card-desc {
+			font-size: $h4-size;
+			font-weight: 400;
+			color: $default-product-desc-color;
+		}
+
+		.product-card-price {
+			margin: 2rem 0;
+			font-size: $h3-size + 0.5rem;
+			font-weight: 600;
+			color: $default-dark-color;
+		}
+
+		.product-card-btn {
+			@include btn-default;
 		}
 	}
 }

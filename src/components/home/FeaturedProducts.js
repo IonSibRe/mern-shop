@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import FeaturedProductsRow from "../home/FeaturedProductsRow";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -118,17 +118,43 @@ const FeaturedProducts = () => {
 
 	const [prevDisabled, setPrevDisable] = useState(true);
 	const [nextDisabled, setNextDisable] = useState(false);
+	let [scrolledAmount, setScrolledAmount] = useState(0);
 	const slider = useRef(null);
+	const columnsInGrid = 4;
+
+	const scrollNext = () => {
+		slider.current.scrollLeft += slider.current.offsetWidth / columnsInGrid;
+		setScrolledAmount(
+			(scrolledAmount += slider.current.offsetWidth / columnsInGrid)
+		);
+		console.log(slider.current.scrollLeft);
+
+		checkButtons();
+	};
+
+	const scrollPrev = () => {
+		slider.current.scrollLeft -= slider.current.offsetWidth / columnsInGrid;
+		setScrolledAmount(
+			(scrolledAmount -= slider.current.offsetWidth / columnsInGrid)
+		);
+		console.log(slider.current.scrollLeft);
+
+		checkButtons();
+	};
 
 	const checkButtons = () => {
-		const isPrevDisabled = slider.current.scrollLeft <= 0;
+		const isPrevDisabled = scrolledAmount <= 0;
 		const isNextDisabled =
-			slider.current.scrollLeft + slider.current.offsetWidth >=
+			scrolledAmount + slider.current.offsetWidth >=
 			slider.current.scrollWidth;
 
 		setPrevDisable(isPrevDisabled);
 		setNextDisable(isNextDisabled);
 	};
+
+	useEffect(() => {
+		console.log(slider.current.scrollLeft);
+	}, []);
 
 	return (
 		<div className="fp">
@@ -141,11 +167,7 @@ const FeaturedProducts = () => {
 							prevDisabled && "disabled"
 						}`}
 						disabled={prevDisabled}
-						onClick={() => {
-							slider.current.scrollLeft -=
-								slider.current.offsetWidth / 2;
-							checkButtons();
-						}}
+						onClick={scrollPrev}
 					>
 						<i className="fas fa-less-than fp-sign"></i>
 					</button>
@@ -154,11 +176,7 @@ const FeaturedProducts = () => {
 							nextDisabled && "disabled"
 						}`}
 						disabled={nextDisabled}
-						onClick={() => {
-							slider.current.scrollLeft +=
-								slider.current.offsetWidth / 2;
-							checkButtons();
-						}}
+						onClick={scrollNext}
 					>
 						<i className="fas fa-greater-than fp-sign"></i>
 					</button>

@@ -11,13 +11,16 @@ import {
 	Checkout,
 	Error,
 } from "./pages";
+import { HomeSlidersProvider } from "./context/HomeSlidersContext";
 
 const App = () => {
 	return (
 		<Router>
 			<Switch>
 				<Route exact path="/">
-					<Home />
+					<HomeSlidersProvider>
+						<Home />
+					</HomeSlidersProvider>
 				</Route>
 				<Route path="/about">
 					<About />
