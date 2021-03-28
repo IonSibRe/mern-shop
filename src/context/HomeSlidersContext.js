@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 
 const HomeSlidersContext = React.createContext();
 
@@ -7,14 +7,13 @@ const HomeSlidersProvider = ({ children }) => {
 	const [nextDisabled, setNextDisable] = useState(false);
 	let [scrolledAmount, setScrolledAmount] = useState(0);
 
+	// Scrolling
 	const scrollNext = (slider, columnsInGrid) => {
 		slider.current.scrollLeft += slider.current.offsetWidth / columnsInGrid;
 		setScrolledAmount(
 			(scrolledAmount += slider.current.offsetWidth / columnsInGrid)
 		);
-		console.log(slider.current.scrollLeft);
-
-		checkButtons();
+		checkButtons(slider);
 	};
 
 	const scrollPrev = (slider, columnsInGrid) => {
@@ -22,9 +21,7 @@ const HomeSlidersProvider = ({ children }) => {
 		setScrolledAmount(
 			(scrolledAmount -= slider.current.offsetWidth / columnsInGrid)
 		);
-		console.log(slider.current.scrollLeft);
-
-		checkButtons();
+		checkButtons(slider);
 	};
 
 	const checkButtons = (slider) => {
@@ -37,6 +34,17 @@ const HomeSlidersProvider = ({ children }) => {
 		setNextDisable(isNextDisabled);
 	};
 
+	// Data
+	const filterRow = (data, row) => {
+		const maxOnRow = Math.ceil(data.length / 2);
+		const startIndex = maxOnRow * row;
+		const endIndex = startIndex + maxOnRow;
+
+		return data.filter(
+			(item, index) => index >= startIndex && index < endIndex
+		);
+	};
+
 	return (
 		<HomeSlidersContext.Provider
 			value={{
@@ -44,7 +52,7 @@ const HomeSlidersProvider = ({ children }) => {
 				nextDisabled,
 				scrollNext,
 				scrollPrev,
-				checkButtons,
+				filterRow,
 			}}
 		>
 			{children}

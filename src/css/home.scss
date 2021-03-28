@@ -109,52 +109,8 @@
 
 // ====================== Featured Products ======================
 .fp {
-	width: $default-width;
-	margin: 0 auto;
+	@include section-center;
 	overflow: hidden;
-}
-
-// Title
-.fp-title-wrap {
-	margin: 1rem 0;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-
-	.fp-title {
-		margin-right: 3rem;
-		font-size: $h2-size;
-		font-weight: 400;
-		color: $default-dark-color;
-	}
-
-	.fp-row {
-		height: 1px;
-		width: 70%;
-		background-color: #ccc;
-	}
-
-	.fp-btns {
-		margin-left: 3rem;
-		font-size: 1.25rem;
-		color: #ccc;
-
-		.fp-btn {
-			border: none;
-			outline: none;
-			background-color: transparent;
-			cursor: pointer;
-		}
-
-		.disabled {
-			pointer-events: none;
-		}
-
-		// Space between signs
-		.fp-sign:last-child {
-			margin-left: 1rem;
-		}
-	}
 }
 
 // Slider
@@ -164,9 +120,7 @@
 	scroll-behavior: smooth;
 
 	.fp-showcase-inner-wrap {
-		width: 100%;
 		margin-bottom: 2rem;
-		display: flex;
 	}
 
 	.fp-showcase-inner-wrap::after {
@@ -176,7 +130,7 @@
 
 	.fp-showcase-item {
 		min-width: 305px; // Width of container / items to display
-		margin-right: 20px;
+		margin-right: 2rem;
 		border: 1px solid #ccc;
 	}
 
@@ -207,7 +161,7 @@
 	}
 }
 
-// Product Card
+// ====================== Product Card ======================
 .product-card {
 	height: 400px;
 	width: $default-width;
@@ -245,6 +199,109 @@
 		.product-card-btn {
 			@include btn-default;
 		}
+	}
+}
+
+// ====================== Best Sellers ======================
+.best-sellers-main-wrap {
+	@include section-center;
+	margin-bottom: 50rem;
+}
+
+// Slider
+.best-sellers-showcase-wrap {
+	width: 100%;
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+
+	.best-sellers-showcase-inner-wrap {
+		margin-bottom: 2rem;
+	}
+
+	.best-sellers-showcase-inner-wrap::after {
+		content: "";
+		border-right: 20px solid transparent;
+	}
+
+	.best-sellers-showcase-item {
+		min-width: 630px; // Width of container / items to display
+		margin-right: 2rem;
+		display: flex;
+		align-items: center;
+		border: 1px solid #ccc;
+	}
+
+	.best-sellers-showcase-item:last-child {
+		margin-right: 0;
+	}
+
+	.best-sellers-showcase-img-wrap {
+		flex: 1;
+	}
+
+	.best-sellers-showcase-text-wrap {
+		flex: 1;
+		height: 100%;
+		display: flex;
+		align-items: center;
+
+		.best-sellers-showcase-text-inner-wrap {
+			margin: 0 1rem;
+		}
+
+		.best-sellers-showcase-item-title {
+			margin-bottom: 0.5rem;
+			font-size: $h4-size + 0.25rem;
+			font-weight: 400;
+			color: $default-dark-color;
+		}
+
+		.best-sellers-showcase-item-stock {
+			margin-bottom: 0.5rem;
+			font-size: $h4-size - 0.25rem;
+			font-weight: 400;
+			color: $default-product-desc-color;
+
+			& > span {
+				font-weight: 400;
+				color: #266cfb;
+			}
+		}
+
+		.best-sellers-showcase-item-desc {
+			font-size: $p-size + 0.25rem;
+		}
+
+		.best-sellers-showcase-item-price {
+			margin: 0.75rem 0 1.25rem 0;
+			font-size: $h4-size;
+			color: $default-dark-color;
+		}
+
+		.best-sellers-showcase-item-link {
+			@include btn-default;
+			margin-bottom: 2rem;
+			padding: 0.75rem 1.5rem;
+		}
+	}
+}
+
+// ====================== Reusable Components ======================
+
+// Showcase Title
+.home-showcase-title-wrap {
+	@include home-sliders-title-wrap;
+
+	.home-showcase-title {
+		@include home-sliders-title;
+	}
+
+	.home-showcase-row {
+		@include home-sliders-row;
+	}
+
+	.home-showcase-btns {
+		@include home-sliders-btns;
 	}
 }
 

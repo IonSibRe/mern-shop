@@ -1,6 +1,4 @@
 import React, { useRef } from "react";
-import FeaturedProductsRow from "../home/FeaturedProductsRow";
-import ShowcaseHeading from "./ShowcaseHeading";
 import { v4 as uuidv4 } from "uuid";
 import {
 	home_showcase_img_1,
@@ -12,8 +10,10 @@ import {
 	home_showcase_img_7,
 	home_showcase_img_8,
 } from "../../sample_data/home_images";
+import BestSellersRow from "./BestSellersRow";
+import ShowcaseHeading from "./ShowcaseHeading";
 
-const FeaturedProducts = () => {
+const BestSellers = () => {
 	const data = [
 		{
 			id: uuidv4(),
@@ -63,73 +63,25 @@ const FeaturedProducts = () => {
 			title: "Lorem ipsum dolor sit.",
 			price: 20.0,
 		},
-		{
-			id: uuidv4(),
-			img: home_showcase_img_5,
-			title: "Lorem ipsum dolor sit.",
-			price: 20.0,
-		},
-		{
-			id: uuidv4(),
-			img: home_showcase_img_6,
-			title: "Lorem ipsum dolor sit.",
-			price: 20.0,
-		},
-		{
-			id: uuidv4(),
-			img: home_showcase_img_7,
-			title: "Lorem ipsum dolor sit.",
-			price: 20.0,
-		},
-		{
-			id: uuidv4(),
-			img: home_showcase_img_8,
-			title: "Lorem ipsum dolor sit.",
-			price: 20.0,
-		},
-		{
-			id: uuidv4(),
-			img: home_showcase_img_5,
-			title: "Lorem ipsum dolor sit.",
-			price: 20.0,
-		},
-		{
-			id: uuidv4(),
-			img: home_showcase_img_6,
-			title: "Lorem ipsum dolor sit.",
-			price: 20.0,
-		},
-		{
-			id: uuidv4(),
-			img: home_showcase_img_7,
-			title: "Lorem ipsum dolor sit.",
-			price: 20.0,
-		},
-		{
-			id: uuidv4(),
-			img: home_showcase_img_8,
-			title: "Lorem ipsum dolor sit.",
-			price: 20.0,
-		},
 	];
 	const slider = useRef(null);
-	const columnsInGrid = 4;
+	const columnsInGrid = 2;
 
 	return (
-		<div className="fp">
+		<div className="best-sellers-main-wrap">
 			<div className="home-showcase-title-wrap">
 				<ShowcaseHeading
 					slider={slider}
 					columnsInGrid={columnsInGrid}
-					title={"featured products"}
+					title={"best sellers"}
 				/>
 			</div>
-			<div className="fp-showcase-wrap" ref={slider}>
-				<FeaturedProductsRow data={data} row={0} />
-				<FeaturedProductsRow data={data} row={1} />
+			<div className="best-sellers-showcase-wrap" ref={slider}>
+				<BestSellersRow data={data} row={0} />
+				<BestSellersRow data={data} row={1} />
 			</div>
 		</div>
 	);
 };
 
-export default FeaturedProducts;
+export default BestSellers;
