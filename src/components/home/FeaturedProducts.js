@@ -113,7 +113,6 @@ const FeaturedProducts = () => {
 		},
 	];
 	const slider = useRef(null);
-	const columnsInGrid = 4;
 	const [rowCount, setRowCount] = useState(0);
 
 	useEffect(() => {
@@ -123,11 +122,7 @@ const FeaturedProducts = () => {
 	return (
 		<div className="fp">
 			<div className="home-showcase-title-wrap">
-				<ShowcaseHeading
-					slider={slider}
-					columnsInGrid={columnsInGrid}
-					title={"featured products"}
-				/>
+				<ShowcaseHeading slider={slider} title={"featured products"} />
 			</div>
 			<div className="fp-showcase-wrap" ref={slider}>
 				<FeaturedProductsRow data={data} row={0} rowCount={rowCount} />

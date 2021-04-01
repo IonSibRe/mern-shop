@@ -11,10 +11,6 @@
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
-	// & > * {
-	// 	border: 2px solid green;
-	// }
-
 	.f-main-sm-title {
 		margin-bottom: 1.5rem;
 		font-size: $h3-size - 0.5rem;

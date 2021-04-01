@@ -1,22 +1,18 @@
 import React, { useState } from "react";
 
-const ShowcaseHeading = ({ slider, columnsInGrid, title }) => {
+const ShowcaseHeading = ({ slider, title }) => {
 	let [scrolledAmount, setScrolledAmount] = useState(0);
 	const [prevDisabled, setPrevDisable] = useState(true);
 	const [nextDisabled, setNextDisable] = useState(false);
 
-	const scrollNext = (slider, columnsInGrid) => {
-		slider.current.scrollLeft += slider.current.offsetWidth / columnsInGrid;
-		setScrolledAmount(
-			(scrolledAmount += slider.current.offsetWidth / columnsInGrid)
-		);
+	const scrollNext = (slider) => {
+		slider.current.scrollLeft += slider.current.offsetWidth;
+		setScrolledAmount((scrolledAmount += slider.current.offsetWidth));
 	};
 
-	const scrollPrev = (slider, columnsInGrid) => {
-		slider.current.scrollLeft -= slider.current.offsetWidth / columnsInGrid;
-		setScrolledAmount(
-			(scrolledAmount -= slider.current.offsetWidth / columnsInGrid)
-		);
+	const scrollPrev = (slider) => {
+		slider.current.scrollLeft -= slider.current.offsetWidth;
+		setScrolledAmount((scrolledAmount -= slider.current.offsetWidth));
 	};
 
 	const checkButtons = () => {
@@ -40,7 +36,7 @@ const ShowcaseHeading = ({ slider, columnsInGrid, title }) => {
 					}`}
 					disabled={prevDisabled}
 					onClick={() => {
-						scrollPrev(slider, columnsInGrid);
+						scrollPrev(slider);
 						checkButtons();
 					}}
 				>
@@ -52,7 +48,7 @@ const ShowcaseHeading = ({ slider, columnsInGrid, title }) => {
 					}`}
 					disabled={nextDisabled}
 					onClick={() => {
-						scrollNext(slider, columnsInGrid);
+						scrollNext(slider);
 						checkButtons();
 					}}
 				>

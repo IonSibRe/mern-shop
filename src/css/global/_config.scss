@@ -65,6 +65,7 @@ $default-light-blue-color: #266cfb;
 }
 
 @mixin home-sliders-title {
+	flex: 0 0 auto;
 	margin-right: 3rem;
 	font-size: $h2-size - 0.25rem;
 	font-weight: 400;
@@ -73,12 +74,13 @@ $default-light-blue-color: #266cfb;
 }
 
 @mixin home-sliders-row {
+	flex: 1 1 auto;
 	height: 1px;
-	width: 20%;
 	background-color: #ccc;
 }
 
 @mixin home-sliders-btns {
+	flex: 0 0 auto;
 	margin-left: 3rem;
 	font-size: 1.25rem;
 	color: #ccc;
