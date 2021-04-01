@@ -1,18 +1,17 @@
 import React, { useContext } from "react";
 import { HomeSlidersContext } from "../../context/HomeSlidersContext";
-import BestSellersItem from "./BestSellersItem";
+import TripleSliderItem from "./TripleSliderItem";
 
-const BestSellersRow = ({ data, row, rowCount }) => {
+const TripleSliderRow = ({ data, row, rowCount }) => {
 	const { filterRow } = useContext(HomeSlidersContext);
 	const displayData = filterRow(data, row, rowCount);
-
 	return (
-		<div className="home-showcase-inner-wrap best-sellers-showcase-inner-wrap">
+		<div className="ts-showcase-inner-wrap home-showcase-inner-wrap">
 			{displayData.map((item) => (
-				<BestSellersItem item={item} key={item.id}></BestSellersItem>
+				<TripleSliderItem item={item} key={item.id}></TripleSliderItem>
 			))}
 		</div>
 	);
 };
 
-export default BestSellersRow;
+export default TripleSliderRow;

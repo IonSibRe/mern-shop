@@ -1,0 +1,163 @@
+@import "../global/config";
+
+// ====================== Footer Main ======================
+.f-main-wrap {
+	@include section-center;
+}
+
+.f-main-inner-wrap {
+	width: 100%;
+	margin: 2rem 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+	// & > * {
+	// 	border: 2px solid green;
+	// }
+
+	.f-main-sm-title {
+		margin-bottom: 1.5rem;
+		font-size: $h3-size - 0.5rem;
+		font-weight: 400;
+		text-transform: uppercase;
+	}
+
+	// Title
+	.f-main-title-wrap > p {
+		margin-bottom: 1rem;
+		font-size: $p-size;
+		color: $default-product-desc-color;
+	}
+
+	.f-main-title-wrap > p > span {
+		text-transform: capitalize;
+		color: $default-dark-color;
+	}
+
+	.f-main-title {
+		margin-bottom: 1.5rem;
+		font-size: $h2-size + 0.5rem;
+		color: $default-dark-color;
+	}
+
+	// Links
+	.f-main-links-wrap {
+		display: flex;
+		flex-direction: column;
+
+		.f-main-link {
+			margin-bottom: 0.75rem;
+			font-size: $link-size;
+			text-transform: capitalize;
+			color: $default-product-desc-color;
+		}
+	}
+}
+
+// ====================== Footer Socials ======================
+.footer-socials-wrap {
+	@include section-center;
+	display: flex;
+	justify-content: space-between;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+
+	& > div {
+		margin: 3rem 0;
+		display: flex;
+		align-items: center;
+	}
+
+	.footer-socials-title {
+		margin-right: 2rem;
+		font-size: $h3-size;
+		font-weight: 400;
+		text-transform: capitalize;
+	}
+
+	// Payment
+	.payment-links-wrap {
+		display: flex;
+		align-items: center;
+	}
+
+	.payment-link {
+		display: inline-block;
+		margin-right: 2rem;
+
+		&:last-child {
+			margin-right: 0;
+		}
+	}
+
+	// Socials
+	.follow-us-link {
+		display: inline-block;
+		margin-right: 2rem;
+		font-size: 2.5rem;
+
+		&:last-child {
+			margin-right: 0;
+		}
+
+		& .facebook-icon {
+			color: #4267b2;
+		}
+
+		& .instagram-icon {
+			color: #fb3958;
+		}
+
+		& .twitter-icon {
+			color: #1da1f2;
+		}
+	}
+}
+
+.payment-link-img {
+	width: 50px;
+}
+
+// ====================== Footer Links ======================
+.footer-links-wrap {
+	@include section-center;
+	margin: 3rem auto;
+
+	.footer-links-inner-wrap {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.footer-link {
+		padding-right: 2rem;
+		margin: 0 2rem 1rem 0;
+		font-size: $link-size;
+		color: $default-dark-color;
+		text-transform: capitalize;
+		border-right: 1px solid $default-dark-color;
+		transition: color 0.2s ease-in-out;
+
+		&:last-child {
+			border-right: none;
+		}
+
+		&:hover {
+			color: $default-light-blue-color;
+		}
+	}
+}
+
+// ====================== Footer Final ======================
+.footer-final-wrap {
+	@include section-center;
+	margin-bottom: 2rem;
+	text-align: center;
+
+	.footer-final-desc {
+		font-size: $h4-size;
+		font-weight: 400;
+		text-transform: capitalize;
+		color: $default-product-desc-color;
+	}
+}

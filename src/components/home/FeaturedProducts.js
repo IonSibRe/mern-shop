@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import FeaturedProductsRow from "../home/FeaturedProductsRow";
 import ShowcaseHeading from "./ShowcaseHeading";
 import { v4 as uuidv4 } from "uuid";
@@ -114,6 +114,11 @@ const FeaturedProducts = () => {
 	];
 	const slider = useRef(null);
 	const columnsInGrid = 4;
+	const [rowCount, setRowCount] = useState(0);
+
+	useEffect(() => {
+		setRowCount(slider.current.children.length);
+	}, [slider]);
 
 	return (
 		<div className="fp">
@@ -125,8 +130,8 @@ const FeaturedProducts = () => {
 				/>
 			</div>
 			<div className="fp-showcase-wrap" ref={slider}>
-				<FeaturedProductsRow data={data} row={0} />
-				<FeaturedProductsRow data={data} row={1} />
+				<FeaturedProductsRow data={data} row={0} rowCount={rowCount} />
+				<FeaturedProductsRow data={data} row={1} rowCount={rowCount} />
 			</div>
 		</div>
 	);

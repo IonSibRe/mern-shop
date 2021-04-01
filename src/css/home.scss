@@ -66,7 +66,7 @@
 	}
 
 	.active {
-		background-color: $btn-bg-color;
+		background-color: $default-light-blue-color;
 	}
 }
 
@@ -115,9 +115,7 @@
 
 // Slider
 .fp-showcase-wrap {
-	width: 100%;
-	overflow-x: hidden;
-	scroll-behavior: smooth;
+	@include slider-wrap;
 
 	.fp-showcase-inner-wrap {
 		margin-bottom: 2rem;
@@ -129,7 +127,7 @@
 	}
 
 	.fp-showcase-item {
-		min-width: 305px; // Width of container / items to display
+		min-width: 305px; // Width of container / items to display - right/left margin
 		margin-right: 2rem;
 		border: 1px solid #ccc;
 	}
@@ -205,14 +203,11 @@
 // ====================== Best Sellers ======================
 .best-sellers-main-wrap {
 	@include section-center;
-	margin-bottom: 50rem;
 }
 
 // Slider
 .best-sellers-showcase-wrap {
-	width: 100%;
-	overflow-x: hidden;
-	scroll-behavior: smooth;
+	@include slider-wrap;
 
 	.best-sellers-showcase-inner-wrap {
 		margin-bottom: 2rem;
@@ -224,7 +219,7 @@
 	}
 
 	.best-sellers-showcase-item {
-		min-width: 630px; // Width of container / items to display
+		min-width: 630px; // Width of container / items to display - right/left margin
 		margin-right: 2rem;
 		display: flex;
 		align-items: center;
@@ -264,7 +259,7 @@
 
 			& > span {
 				font-weight: 400;
-				color: #266cfb;
+				color: $default-light-blue-color;
 			}
 		}
 
@@ -282,6 +277,291 @@
 			@include btn-default;
 			margin-bottom: 2rem;
 			padding: 0.75rem 1.5rem;
+		}
+	}
+}
+
+// ====================== Card Showcase ======================
+.cs-wrap {
+	@include section-center;
+	margin: 3rem auto;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 3rem;
+
+	.cs-card {
+		height: $card-height;
+		position: relative;
+		box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+		transition: all 0.25s ease-in-out;
+	}
+
+	.cs-card:hover {
+		box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.25);
+		transform: scale(1.01);
+	}
+
+	.cs-card-lg {
+		grid-column: 1 / 3;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+
+	.cs-card-text-wrap-lg {
+		margin-right: 6rem;
+	}
+
+	.cs-card-text-wrap-sm {
+		margin: 2rem 0 0 2rem;
+	}
+
+	.cs-title {
+		font-size: $h2-size - 0.5rem;
+		font-weight: 400;
+		color: $default-dark-color;
+	}
+
+	.cs-desc {
+		margin-bottom: 1rem;
+		font-size: $h4-size - 0.25rem;
+		font-weight: 400;
+		color: $default-product-desc-color;
+	}
+
+	.cs-price {
+		font-size: $h4-size + 1rem;
+		font-weight: 400;
+		color: $default-dark-color;
+	}
+
+	.cs-card-link {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+	}
+}
+// ====================== New Arrivals ======================
+.na-wrap {
+	@include section-center;
+}
+
+.na-showcase-wrap {
+	@include slider-wrap;
+
+	.na-showcase-item {
+		min-width: 240px; // Width of container / items to display - right/left margin
+		margin-right: 2rem;
+		border: 1px solid #ccc;
+	}
+
+	.na-showcase-text-wrap {
+		text-align: center;
+
+		.na-showcase-item-title {
+			font-size: $h4-size - 0.25rem;
+			font-weight: 400;
+			color: $default-dark-color;
+		}
+
+		.na-showcase-item-price {
+			margin: 0.75rem 0 1.25rem 0;
+			font-size: $h4-size - 0.25rem;
+			color: $default-dark-color;
+		}
+
+		.na-showcase-item-link {
+			@include btn-default;
+			padding: 0.75rem 1.5rem;
+			margin-bottom: 2rem;
+		}
+	}
+}
+
+// ====================== Triple Card Showcase ======================
+.tc-wrap {
+	@include section-center;
+	margin: 3rem auto;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 2rem;
+
+	.tc-card {
+		height: $card-height;
+		position: relative;
+		box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+		transition: all 0.25s ease-in-out;
+	}
+
+	.tc-card:hover {
+		box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.25);
+		transform: scale(1.01);
+	}
+
+	.tc-link {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+	}
+}
+
+// ====================== Triple Slider ======================
+
+.ts-wrap {
+	@include section-center;
+	display: flex;
+	justify-content: space-between;
+}
+
+.ts-showcase-wrap {
+	width: 420px; // Container width / Sliders to display - desired spacing
+}
+
+.ts-single-slider-wrap {
+	@include slider-wrap;
+}
+
+.ts-showcase-item {
+	display: flex;
+	align-items: center;
+	min-width: 100%; // Same as showcase
+
+	.ts-showcase-img-wrap {
+		flex: 1;
+	}
+
+	.ts-showcase-text-wrap {
+		margin-left: 2rem;
+		flex: 2;
+	}
+
+	.ts-showcase-item-title {
+		margin-bottom: 0.5rem;
+		font-size: $h4-size - 0.25rem;
+		font-weight: 400;
+		color: $default-product-desc-color;
+	}
+
+	.ts-showcase-item-price {
+		margin-bottom: 0.5rem;
+		font-size: $h4-size - 0.25rem;
+		color: $default-dark-color;
+	}
+
+	.ts-showcase-item-link {
+		@include btn-default;
+		padding: 0.5rem 1rem;
+		font-size: $link-size - 0.25rem;
+	}
+}
+
+// ====================== Popular Categories ======================
+.pc-wrap {
+	@include section-center;
+	margin-bottom: 4rem;
+}
+
+.pc-showcase-wrap {
+	@include slider-wrap;
+
+	.pc-showcase-item {
+		min-width: 305px; // Width of container / items to display - right/left margin
+		margin-right: 2rem;
+	}
+
+	.pc-showcase-item-title {
+		margin: 1rem 0 2rem 0;
+		font-size: $h4-size - 0.25rem;
+		color: $default-dark-color;
+	}
+
+	.pc-categories-wrap {
+		margin-bottom: 1rem;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.pc-category-link {
+		display: block;
+		margin-bottom: 0.5rem;
+		font-size: $link-size;
+		color: $default-product-desc-color;
+		transition: all 0.2s ease-in-out;
+
+		&:hover {
+			color: $default-light-blue-color;
+		}
+	}
+
+	.pc-showcase-view-link {
+		font-size: $link-size;
+		text-transform: capitalize;
+		color: $default-light-blue-color;
+	}
+}
+
+// ====================== Newsletters ======================
+.nl-main-wrap {
+	background-color: $default-light-blue-color;
+	margin: 4rem 0;
+	padding: 4rem 0;
+}
+
+.nl-inner-wrap {
+	@include section-center;
+	display: flex;
+	justify-content: space-between;
+
+	.nl-text-wrap {
+		flex: 1;
+
+		& > * {
+			color: $default-light-color;
+		}
+
+		.nl-title {
+			font-size: $h2-size - 0.25rem;
+			font-weight: 400;
+		}
+
+		.nl-desc {
+			font-size: $h4-size - 0.25rem;
+			font-weight: 400;
+		}
+	}
+
+	.nl-form-wrap {
+		flex: 2;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		& > form > * {
+			border: none;
+			outline: none;
+		}
+
+		.nl-input {
+			width: 600px;
+			padding: 1.25rem;
+			font-size: $link-size;
+			border-top-left-radius: 5px;
+			border-bottom-left-radius: 5px;
+		}
+
+		.nl-submit-btn {
+			padding: 1.25rem 2rem;
+			font-size: $link-size;
+			font-weight: 600;
+			text-transform: capitalize;
+			color: $default-light-color;
+			background-color: $default-dark-color;
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
 		}
 	}
 }

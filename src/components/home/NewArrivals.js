@@ -1,4 +1,6 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef } from "react";
+import ShowcaseHeading from "./ShowcaseHeading";
+import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import {
 	home_showcase_img_1,
@@ -10,10 +12,8 @@ import {
 	home_showcase_img_7,
 	home_showcase_img_8,
 } from "../../sample_data/home_images";
-import BestSellersRow from "./BestSellersRow";
-import ShowcaseHeading from "./ShowcaseHeading";
 
-const BestSellers = () => {
+const NewArrivals = () => {
 	const data = [
 		{
 			id: uuidv4(),
@@ -65,29 +65,45 @@ const BestSellers = () => {
 		},
 	];
 	const slider = useRef(null);
-	const columnsInGrid = 2;
-
-	const [rowCount, setRowCount] = useState(0);
-
-	useEffect(() => {
-		setRowCount(slider.current.children.length);
-	}, [slider]);
+	const columnsInGrid = 5;
 
 	return (
-		<div className="best-sellers-main-wrap">
+		<div className="na-wrap">
 			<div className="home-showcase-title-wrap">
 				<ShowcaseHeading
 					slider={slider}
 					columnsInGrid={columnsInGrid}
-					title={"best sellers"}
+					title={"new arrivals"}
 				/>
 			</div>
-			<div className="best-sellers-showcase-wrap" ref={slider}>
-				<BestSellersRow data={data} row={0} rowCount={rowCount} />
-				<BestSellersRow data={data} row={1} rowCount={rowCount} />
+			<div className="na-showcase-wrap" ref={slider}>
+				<div className="na-showcase-inner-wrap home-showcase-inner-wrap">
+					{data.map((item) => {
+						return <NewArrivalsItem item={item} key={item.id} />;
+					})}
+				</div>
 			</div>
 		</div>
 	);
 };
 
-export default BestSellers;
+const NewArrivalsItem = ({ item }) => {
+	const { id, img, title, price } = item;
+
+	return (
+		<div className="na-showcase-item" key={id}>
+			<div className="na-showcase-img-wrap">
+				<img src={img} alt="#" className="na-showcase-img" />
+			</div>
+			<div className="na-showcase-text-wrap">
+				<h4 className="na-showcase-item-title">{title}</h4>
+				<h4 className="na-showcase-item-price">${price.toFixed(2)}</h4>
+				<Link to="/cart" className="na-showcase-item-link">
+					add to cart
+				</Link>
+			</div>
+		</div>
+	);
+};
+
+export default NewArrivals;

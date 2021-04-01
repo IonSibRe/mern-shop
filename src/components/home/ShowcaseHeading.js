@@ -1,10 +1,34 @@
-import React, { useContext } from "react";
-import { HomeSlidersContext } from "../../context/HomeSlidersContext";
+import React, { useState } from "react";
 
 const ShowcaseHeading = ({ slider, columnsInGrid, title }) => {
-	const { prevDisabled, nextDisabled, scrollPrev, scrollNext } = useContext(
-		HomeSlidersContext
-	);
+	let [scrolledAmount, setScrolledAmount] = useState(0);
+	const [prevDisabled, setPrevDisable] = useState(true);
+	const [nextDisabled, setNextDisable] = useState(false);
+
+	const scrollNext = (slider, columnsInGrid) => {
+		slider.current.scrollLeft += slider.current.offsetWidth / columnsInGrid;
+		setScrolledAmount(
+			(scrolledAmount += slider.current.offsetWidth / columnsInGrid)
+		);
+	};
+
+	const scrollPrev = (slider, columnsInGrid) => {
+		slider.current.scrollLeft -= slider.current.offsetWidth / columnsInGrid;
+		setScrolledAmount(
+			(scrolledAmount -= slider.current.offsetWidth / columnsInGrid)
+		);
+	};
+
+	const checkButtons = () => {
+		const isPrevDisabled = scrolledAmount <= 0;
+		const isNextDisabled =
+			scrolledAmount + slider.current.offsetWidth >=
+			slider.current.scrollWidth;
+
+		setPrevDisable(isPrevDisabled);
+		setNextDisable(isNextDisabled);
+	};
+
 	return (
 		<>
 			<h2 className="home-showcase-title">{title}</h2>
@@ -15,7 +39,10 @@ const ShowcaseHeading = ({ slider, columnsInGrid, title }) => {
 						prevDisabled && "btn-disabled"
 					}`}
 					disabled={prevDisabled}
-					onClick={() => scrollPrev(slider, columnsInGrid)}
+					onClick={() => {
+						scrollPrev(slider, columnsInGrid);
+						checkButtons();
+					}}
 				>
 					<i className="fas fa-less-than fp-sign"></i>
 				</button>
@@ -24,7 +51,10 @@ const ShowcaseHeading = ({ slider, columnsInGrid, title }) => {
 						nextDisabled && "btn-disabled"
 					}`}
 					disabled={nextDisabled}
-					onClick={() => scrollNext(slider, columnsInGrid)}
+					onClick={() => {
+						scrollNext(slider, columnsInGrid);
+						checkButtons();
+					}}
 				>
 					<i className="fas fa-greater-than fp-sign"></i>
 				</button>
