@@ -5,6 +5,7 @@
 
 // Layout
 $default-width: 1300px;
+$sm-width: 768px;
 $card-height: 250px;
 
 // Typography
@@ -32,6 +33,12 @@ $default-light-blue-color: #266cfb;
 @mixin section-center {
 	width: $default-width;
 	margin: 0 auto;
+}
+
+@mixin flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 // Button
