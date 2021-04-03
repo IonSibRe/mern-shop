@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../css/global/_footer.scss";
+import { v4 as uuidv4 } from "uuid";
 import {
 	footer_paypal,
 	footer_mastercard,
@@ -82,7 +83,7 @@ const FooterMain = () => {
 	return (
 		<div className="f-main-wrap">
 			<div className="f-main-inner-wrap">
-				<div className="f-main-title-wrap">
+				<div className="f-main-title-wrap f-main-item">
 					<h2 className="f-main-title">MERN</h2>
 					<p className="f-main-desc">
 						Lorem ipsum dolor sit, amet consectetur adipisicing
@@ -98,32 +99,44 @@ const FooterMain = () => {
 						<span>call us:</span> 253-617-3893
 					</p>
 				</div>
-				<div className="f-main-info-wrap f-main-links-wrap">
+				<div className="f-main-links-wrap f-main-item">
 					<h3 className="f-main-info-title f-main-sm-title">
 						information
 					</h3>
 					{infoLinks.map((link) => (
-						<Link to="/about" className="f-main-link">
+						<Link
+							to="/about"
+							className="f-main-link"
+							key={uuidv4()}
+						>
 							{link}
 						</Link>
 					))}
 				</div>
-				<div className="f-main-custom-links-wrap f-main-links-wrap">
+				<div className="f-main-links-wrap f-main-item">
 					<h3 className="f-main-custom-links-title f-main-sm-title">
 						custom links
 					</h3>
 					{customLinks.map((link) => (
-						<Link to="/login" className="f-main-link">
+						<Link
+							to="/login"
+							className="f-main-link"
+							key={uuidv4()}
+						>
 							{link}
 						</Link>
 					))}
 				</div>
-				<div className="f-main-services-wrap f-main-links-wrap">
+				<div className="f-main-links-wrap f-main-item">
 					<h3 className="f-main-info-title f-main-sm-title">
 						services
 					</h3>
 					{servicesLinks.map((link) => (
-						<Link to="/contact" className="f-main-link">
+						<Link
+							to="/contact"
+							className="f-main-link"
+							key={uuidv4()}
+						>
 							{link}
 						</Link>
 					))}
@@ -136,50 +149,52 @@ const FooterMain = () => {
 const FooterSocials = () => {
 	return (
 		<div className="footer-socials-wrap">
-			<div className="payment-wrap">
-				<div className="payment-title-wrap">
-					<h3 className="payment-title footer-socials-title">
-						payment:{" "}
-					</h3>
+			<div className="footer-socials-inner-wrap">
+				<div className="payment-wrap">
+					<div className="payment-title-wrap">
+						<h3 className="payment-title footer-socials-title">
+							payment:{" "}
+						</h3>
+					</div>
+					<div className="payment-links-wrap">
+						{paymentData.map((item) => {
+							const { id, img } = item;
+							return (
+								<Link
+									to="/checkout"
+									className="payment-link"
+									key={id}
+								>
+									<img
+										src={img}
+										alt="#"
+										className="payment-link-img"
+									/>
+								</Link>
+							);
+						})}
+					</div>
 				</div>
-				<div className="payment-links-wrap">
-					{paymentData.map((item) => {
-						const { id, img } = item;
-						return (
-							<Link
-								to="/checkout"
-								className="payment-link"
-								key={id}
-							>
-								<img
-									src={img}
-									alt="#"
-									className="payment-link-img"
-								/>
-							</Link>
-						);
-					})}
-				</div>
-			</div>
-			<div className="follow-us-wrap">
-				<div className="follow-us-title-wrap">
-					<h3 className="follow-us-title footer-socials-title">
-						follow us:{" "}
-					</h3>
-				</div>
-				<div className="follow-us-links-wrap">
-					{socialIcons.map((item) => {
-						const { id, icon } = item;
-						return (
-							<Link
-								to="/checkout"
-								className="follow-us-link"
-								key={id}
-							>
-								<i className={icon}></i>
-							</Link>
-						);
-					})}
+				<div className="follow-us-wrap">
+					<div className="follow-us-title-wrap">
+						<h3 className="follow-us-title footer-socials-title">
+							follow us:{" "}
+						</h3>
+					</div>
+					<div className="follow-us-links-wrap">
+						{socialIcons.map((item) => {
+							const { id, icon } = item;
+							return (
+								<Link
+									to="/checkout"
+									className="follow-us-link"
+									key={id}
+								>
+									<i className={icon}></i>
+								</Link>
+							);
+						})}
+					</div>
 				</div>
 			</div>
 		</div>

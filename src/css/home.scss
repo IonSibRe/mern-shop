@@ -400,7 +400,7 @@
 	@include section-center;
 	margin: 3rem auto;
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 	gap: 2rem;
 
 	.tc-card {
@@ -433,7 +433,9 @@
 }
 
 .ts-showcase-wrap {
-	width: 420px; // Container width / Sliders to display - desired spacing
+	width: calc(
+		33.33% - 1.33rem
+	); // Container width / Sliders to display - desired spacing
 }
 
 .ts-single-slider-wrap {
@@ -483,9 +485,20 @@
 .pc-showcase-wrap {
 	@include slider-wrap;
 
+	.pc-showcase-inner-wrap::after {
+		content: "";
+		border-right: 20px solid transparent;
+	}
+
 	.pc-showcase-item {
-		min-width: 305px; // Width of container / items to display - right/left margin
+		min-width: calc(
+			25% - 2rem
+		); // Width of container / items to display - right/left margin
 		margin-right: 2rem;
+	}
+
+	.pc-showcase-item:last-child {
+		margin-right: 0;
 	}
 
 	.pc-showcase-item-title {
@@ -560,8 +573,14 @@
 			outline: none;
 		}
 
+		.nl-form {
+			width: 90%;
+			display: flex;
+			justify-content: space-between;
+		}
+
 		.nl-input {
-			width: 600px;
+			flex: 6;
 			padding: 1.25rem;
 			font-size: $link-size;
 			border-top-left-radius: 5px;
@@ -569,6 +588,7 @@
 		}
 
 		.nl-submit-btn {
+			flex: 1;
 			padding: 1.25rem 2rem;
 			font-size: $link-size;
 			font-weight: 600;
@@ -689,6 +709,55 @@
 	.na-showcase-wrap .na-showcase-item {
 		min-width: calc(33.33% - 2rem);
 	}
+
+	// ----------- Triple Card Showcase -----------
+	.tc-wrap {
+		width: $sm-width;
+	}
+
+	// ----------- Triple Slider -----------
+	.ts-wrap {
+		width: $sm-width;
+		flex-direction: column;
+	}
+
+	.ts-showcase-wrap {
+		width: 100%;
+	}
+
+	// ----------- Popular Categories -----------
+	.pc-wrap {
+		width: 100%;
+	}
+
+	.pc-showcase-wrap .pc-showcase-item {
+		min-width: calc(33.33% - 2rem);
+	}
+
+	.pc-showcase-wrap .pc-showcase-text-wrap {
+		text-align: center;
+	}
+
+	// ----------- Newsletter -----------
+	.nl-inner-wrap {
+		width: 100%;
+		flex-direction: column;
+	}
+
+	.nl-inner-wrap .nl-text-wrap {
+		margin-bottom: 2rem;
+		text-align: center;
+	}
+
+	.nl-inner-wrap .nl-form-wrap {
+		flex: 1;
+		width: $sm-width;
+		margin: 0 auto;
+	}
+
+	.nl-inner-wrap .nl-form-wrap .nl-form {
+		width: 100%;
+	}
 }
 
 @media screen and (max-width: 768px) {
@@ -743,6 +812,43 @@
 	// ----------- New Arrivals -----------
 	.na-showcase-wrap .na-showcase-item {
 		min-width: calc(50% - 2rem);
+	}
+
+	// ----------- Triple Card Showcase -----------
+	.tc-wrap {
+		width: $esm-width;
+	}
+
+	// ----------- Triple Slider -----------
+	.ts-wrap {
+		width: 100%;
+	}
+
+	// ----------- Popular Categories -----------
+	.pc-showcase-wrap .pc-showcase-item {
+		min-width: calc(50% - 2rem);
+	}
+
+	.pc-showcase-wrap .pc-showcase-item-title {
+		font-size: $h4-size + 0.25rem;
+	}
+
+	// ----------- Newsletter -----------
+	.nl-inner-wrap .nl-form-wrap {
+		width: 95%;
+	}
+
+	.nl-inner-wrap .nl-text-wrap {
+		width: 95%;
+		margin: 0 auto 2rem auto;
+	}
+
+	.nl-inner-wrap .nl-form-wrap .nl-input {
+		flex: 1 1 auto;
+	}
+
+	.nl-inner-wrap .nl-form-wrap .nl-submit-btn {
+		flex: 0 0 auto;
 	}
 }
 
@@ -834,5 +940,48 @@
 	.na-showcase-wrap .na-showcase-inner-wrap::after {
 		content: "";
 		border-right: none;
+	}
+
+	// ----------- Triple Card Showcase -----------
+	.tc-wrap {
+		width: 100%;
+	}
+
+	.tc-wrap .tc-card:hover {
+		transform: scale(0);
+	}
+
+	// ----------- Triple Slider -----------
+	.ts-showcase-wrap {
+		margin-bottom: 2rem;
+	}
+
+	// ----------- Popular Categories -----------
+	.pc-showcase-wrap .pc-showcase-item {
+		min-width: 100%;
+		margin-right: 0;
+	}
+
+	.pc-showcase-wrap .pc-showcase-inner-wrap::after {
+		content: "";
+		border-right: none;
+	}
+
+	// ----------- Newsletter -----------
+	.nl-inner-wrap .nl-form-wrap .nl-form {
+		display: block;
+		text-align: center;
+	}
+
+	.nl-inner-wrap .nl-form-wrap .nl-input {
+		width: 100%;
+		margin-bottom: 2rem;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+
+	.nl-inner-wrap .nl-form-wrap .nl-submit-btn {
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
 	}
 }
