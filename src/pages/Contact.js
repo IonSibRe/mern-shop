@@ -1,10 +1,17 @@
 import React from "react";
+import Navbar from "../components/Navbar";
+import ContactSection from "../components/contact/ContactSection";
+import Newsletter from "../components/Newsletter";
+import Footer from "../components/Footer";
 
 const Contact = () => {
 	return (
-		<div>
-			<h1>Contact Page</h1>
-		</div>
+		<>
+			<Navbar />
+			<ContactSection />
+			<Newsletter />
+			<Footer />
+		</>
 	);
 };
 
