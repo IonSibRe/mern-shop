@@ -120,7 +120,7 @@ const FeaturedProducts = () => {
 	}, [slider]);
 
 	return (
-		<div className="fp">
+		<div className="fp section-center">
 			<div className="home-showcase-title-wrap">
 				<ShowcaseHeading slider={slider} title={"featured products"} />
 			</div>

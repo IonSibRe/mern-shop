@@ -78,7 +78,7 @@ const TripleSlider = () => {
 	}, [firstSlider, secondSlider, thirdSlider]);
 
 	return (
-		<div className="ts-wrap">
+		<div className="ts-wrap section-center">
 			<TripleSliderSingle
 				data={data}
 				slider={firstSlider}

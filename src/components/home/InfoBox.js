@@ -30,7 +30,7 @@ const data = [
 
 const InfoBox = () => {
 	return (
-		<div className="info-box">
+		<div className="info-box section-center">
 			{data.map((box) => {
 				const { id, title, desc, icon } = box;
 

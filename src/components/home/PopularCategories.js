@@ -65,7 +65,7 @@ const PopularCategories = () => {
 	const columnsInGrid = 4;
 
 	return (
-		<div className="pc-wrap">
+		<div className="pc-wrap section-center">
 			<div className="home-showcase-title-wrap">
 				<ShowcaseHeading
 					slider={slider}

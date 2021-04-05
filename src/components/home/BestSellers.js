@@ -74,7 +74,7 @@ const BestSellers = () => {
 	}, [slider]);
 
 	return (
-		<div className="best-sellers-main-wrap">
+		<div className="best-sellers-main-wrap section-center">
 			<div className="home-showcase-title-wrap">
 				<ShowcaseHeading
 					slider={slider}

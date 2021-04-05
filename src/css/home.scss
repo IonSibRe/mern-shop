@@ -18,8 +18,7 @@
 
 	.slide-text-wrap {
 		height: 100%;
-		width: $default-width;
-		margin: 0 auto;
+		@include section-center;
 
 		.slide-text-inner-wrap {
 			width: 500px;
@@ -72,7 +71,6 @@
 
 // ====================== Info Box ======================
 .info-box {
-	width: $default-width;
 	margin: 4rem auto;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -109,7 +107,6 @@
 
 // ====================== Featured Products ======================
 .fp {
-	@include section-center;
 	overflow: hidden;
 }
 
@@ -164,7 +161,6 @@
 // ====================== Product Card ======================
 .product-card {
 	height: 400px;
-	width: $default-width;
 	margin: 5rem auto;
 	display: flex;
 	align-items: center;
@@ -203,10 +199,6 @@
 }
 
 // ====================== Best Sellers ======================
-.best-sellers-main-wrap {
-	@include section-center;
-}
-
 // Slider
 .best-sellers-showcase-wrap {
 	@include slider-wrap;
@@ -287,7 +279,6 @@
 
 // ====================== Card Showcase ======================
 .cs-wrap {
-	@include section-center;
 	margin: 3rem auto;
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
@@ -348,10 +339,6 @@
 	}
 }
 // ====================== New Arrivals ======================
-.na-wrap {
-	@include section-center;
-}
-
 .na-showcase-wrap {
 	@include slider-wrap;
 
@@ -397,7 +384,6 @@
 
 // ====================== Triple Card Showcase ======================
 .tc-wrap {
-	@include section-center;
 	margin: 3rem auto;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -427,7 +413,6 @@
 // ====================== Triple Slider ======================
 
 .ts-wrap {
-	@include section-center;
 	display: flex;
 	justify-content: space-between;
 }
@@ -478,7 +463,6 @@
 
 // ====================== Popular Categories ======================
 .pc-wrap {
-	@include section-center;
 	margin-bottom: 4rem;
 }
 
@@ -540,7 +524,6 @@
 }
 
 .nl-inner-wrap {
-	@include section-center;
 	display: flex;
 	justify-content: space-between;
 
@@ -646,26 +629,17 @@
 	}
 
 	// ----------- Info Box -----------
-	.info-box {
-		width: 100%;
-
-		.info-single-inner-box {
-			border: none;
-		}
+	.info-box .info-single-inner-box {
+		border: none;
 	}
 
 	// ----------- Featured Products -----------
-	.fp {
-		width: 100%;
-	}
-
 	.fp-showcase-wrap .fp-showcase-item {
 		min-width: calc(33.33% - 2rem); // subtract margin
 	}
 
 	// ----------- Product Card -----------
 	.product-card {
-		width: 100%;
 		justify-content: center;
 	}
 
@@ -679,10 +653,6 @@
 	}
 
 	// ----------- Best Sellers -----------
-	.best-sellers-main-wrap {
-		width: 100%;
-	}
-
 	.best-sellers-showcase-wrap .best-sellers-showcase-item {
 		min-width: calc(50% - 2rem); // subtract margin
 		flex-direction: column;
@@ -702,10 +672,6 @@
 	}
 
 	// ----------- New Arrivals -----------
-	.na-wrap {
-		width: 100%;
-	}
-
 	.na-showcase-wrap .na-showcase-item {
 		min-width: calc(33.33% - 2rem);
 	}
@@ -726,10 +692,6 @@
 	}
 
 	// ----------- Popular Categories -----------
-	.pc-wrap {
-		width: 100%;
-	}
-
 	.pc-showcase-wrap .pc-showcase-item {
 		min-width: calc(33.33% - 2rem);
 	}
@@ -740,7 +702,6 @@
 
 	// ----------- Newsletter -----------
 	.nl-inner-wrap {
-		width: 100%;
 		flex-direction: column;
 	}
 

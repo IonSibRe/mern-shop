@@ -107,6 +107,11 @@ $default-light-blue-color: #266cfb;
 }
 
 // Utility Classes
+.section-center {
+	width: $default-width;
+	margin: 0 auto;
+}
+
 .home-showcase-inner-wrap {
 	display: flex;
 }
@@ -142,4 +147,11 @@ ul {
 
 a {
 	text-decoration: none;
+}
+
+// ============= Media Queries =============
+@media screen and (max-width: 1300px) {
+	.section-center {
+		width: 100%;
+	}
 }

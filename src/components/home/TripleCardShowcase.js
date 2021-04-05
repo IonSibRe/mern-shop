@@ -26,7 +26,7 @@ const TripleCardShowcase = () => {
 	];
 
 	return (
-		<div className="tc-wrap">
+		<div className="tc-wrap section-center">
 			{data.map((item) => {
 				const { id, bg_img } = item;
 

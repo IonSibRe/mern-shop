@@ -68,7 +68,7 @@ const NewArrivals = () => {
 	const columnsInGrid = 5;
 
 	return (
-		<div className="na-wrap">
+		<div className="na-wrap section-center">
 			<div className="home-showcase-title-wrap">
 				<ShowcaseHeading
 					slider={slider}

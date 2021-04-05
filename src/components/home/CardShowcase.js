@@ -33,7 +33,7 @@ const CardShowcase = () => {
 	];
 
 	return (
-		<div className="cs-wrap">
+		<div className="cs-wrap section-center">
 			{data.map((item, index) => {
 				const { id, title, desc, bg_img, price = undefined } = item;
 
