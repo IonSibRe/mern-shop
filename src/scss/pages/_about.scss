@@ -1,0 +1,90 @@
+@import "../utils/config";
+
+// ====================== Welcome Section ======================
+.ws-wrap {
+	margin: 4rem auto;
+	display: flex;
+
+	.ws-img-wrap {
+		flex: 1;
+	}
+
+	.ws-text-wrap {
+		flex: 1;
+
+		.ws-text-inner-wrap {
+			margin-left: 3rem;
+		}
+
+		.ws-text-title {
+			margin-bottom: 1.5rem;
+			font-size: $h2-size + 1rem;
+			font-weight: 400;
+			color: $default-dark-color;
+		}
+
+		.ws-text-p {
+			margin-bottom: 3rem;
+			font-size: $p-size + 0.25rem;
+			color: $default-dark-color;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+
+// ====================== Info Section ======================
+.info-section-wrap {
+	margin: 4rem auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 4rem;
+
+	.info-section-title {
+		margin-bottom: 1.5rem;
+		font-size: $h3-size + 0.5rem;
+		font-weight: 400;
+		text-transform: capitalize;
+		color: $default-dark-color;
+	}
+
+	.info-section-desc {
+		font-size: $p-size + 0.25rem;
+		color: $default-dark-color;
+	}
+}
+
+// ====================== Media Queries ======================
+@media screen and (max-width: 1300px) {
+	.ws-wrap {
+		width: $sm-width;
+		flex-direction: column;
+	}
+
+	.ws-wrap .ws-text-wrap .ws-text-inner-wrap {
+		margin-top: 1rem;
+		margin-left: 0;
+	}
+
+	.info-section-wrap {
+		width: 95%;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.ws-wrap {
+		width: 95%;
+	}
+}
+
+@media screen and (max-width: 425px) {
+	.ws-wrap .ws-text-wrap .ws-text-title {
+		font-size: $h2-size;
+	}
+
+	.info-section-wrap .info-section-title {
+		font-size: $h3-size;
+	}
+}

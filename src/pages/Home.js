@@ -10,7 +10,7 @@ import NewArrivals from "../components/home/NewArrivals";
 import TripleCardShowcase from "../components/home/TripleCardShowcase";
 import TripleSlider from "../components/home/TripleSlider";
 import PopularCategories from "../components/home/PopularCategories";
-import Newsletter from "../components/home/Newsletter";
+import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 
 const Home = () => {
