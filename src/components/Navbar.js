@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../css/global/_navbar.scss";
 import logo_img from "../assets/img/mern-logo.jpg";
 
 const pages = [

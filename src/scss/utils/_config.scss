@@ -3,14 +3,15 @@
 
 // ============= Variables =============
 
-// Layout
+// ------------- Layout -------------
 $default-width: 1300px;
 $sm-width: 768px;
 $esm-width: 425px;
 
 $card-height: 250px;
 
-// Typography
+// ------------- Typography -------------
+
 $h1-size: 7rem;
 $h2-size: 3rem;
 $h3-size: 2.5rem;
@@ -23,7 +24,7 @@ $nav-link-size: 1.75rem;
 
 $default-font-family: "Open Sans", sans-serif;
 
-// Colors
+// ------------- Colors -------------
 $body-bg: #fff;
 $default-dark-color: #333;
 $default-light-color: #fff;
@@ -43,7 +44,7 @@ $default-light-blue-color: #266cfb;
 	align-items: center;
 }
 
-// Button
+// ------------- Button -------------
 @mixin btn-default {
 	display: inline-block;
 	padding: 1rem 2rem;
@@ -60,53 +61,13 @@ $default-light-blue-color: #266cfb;
 	}
 }
 
-// Home Slider
+// ------------- Home Slider -------------
 @mixin slider-wrap {
 	overflow-x: hidden;
 	scroll-behavior: smooth;
 }
 
-@mixin home-sliders-title-wrap {
-	margin: 1rem 0;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-@mixin home-sliders-title {
-	flex: 0 0 auto;
-	margin-right: 3rem;
-	font-size: $h2-size - 0.25rem;
-	font-weight: 400;
-	text-transform: capitalize;
-	color: $default-dark-color;
-}
-
-@mixin home-sliders-row {
-	flex: 1 1 auto;
-	height: 1px;
-	background-color: #ccc;
-}
-
-@mixin home-sliders-btns {
-	flex: 0 0 auto;
-	margin-left: 3rem;
-	font-size: 1.25rem;
-	color: #ccc;
-
-	& > button {
-		border: none;
-		outline: none;
-		background-color: transparent;
-		cursor: pointer;
-	}
-
-	& > button:last-child {
-		margin-left: 1rem;
-	}
-}
-
-// Utility Classes
+// ------------- Utility Classes -------------
 .section-center {
 	width: $default-width;
 	margin: 0 auto;

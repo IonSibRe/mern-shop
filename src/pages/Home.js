@@ -12,7 +12,6 @@ import TripleSlider from "../components/home/TripleSlider";
 import PopularCategories from "../components/home/PopularCategories";
 import Newsletter from "../components/home/Newsletter";
 import Footer from "../components/Footer";
-import "../css/home.scss";
 
 const Home = () => {
 	return (

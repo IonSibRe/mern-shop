@@ -12,6 +12,7 @@ import {
 	Error,
 } from "./pages";
 import { HomeSlidersProvider } from "./context/HomeSlidersContext";
+import "./scss/main.scss";
 
 const App = () => {
 	return (

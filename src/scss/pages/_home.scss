@@ -1,4 +1,4 @@
-@import "./global/config";
+@import "../utils/config";
 
 // ====================== Main Showcase ======================
 .slider {
@@ -588,21 +588,44 @@
 
 // Showcase Title
 .home-showcase-title-wrap {
-	@include home-sliders-title-wrap;
+	margin: 1rem 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 
 	.home-showcase-title {
-		@include home-sliders-title;
+		flex: 0 0 auto;
+		margin-right: 3rem;
+		font-size: $h2-size - 0.25rem;
+		font-weight: 400;
+		text-transform: capitalize;
+		color: $default-dark-color;
 	}
 
 	.home-showcase-row {
-		@include home-sliders-row;
+		flex: 1 1 auto;
+		height: 1px;
+		background-color: #ccc;
 	}
 
 	.home-showcase-btns {
-		@include home-sliders-btns;
+		flex: 0 0 auto;
+		margin-left: 3rem;
+		font-size: 1.25rem;
+		color: #ccc;
+
+		& > button {
+			border: none;
+			outline: none;
+			background-color: transparent;
+			cursor: pointer;
+		}
+
+		& > button:last-child {
+			margin-left: 1rem;
+		}
 	}
 }
-
 // ====================== Media Queries ======================
 @media screen and (max-width: 1300px) {
 	// ----------- Global -----------
