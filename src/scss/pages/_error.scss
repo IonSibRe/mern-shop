@@ -1,0 +1,44 @@
+.es-wrap {
+	height: 100vh;
+	text-align: center;
+
+	.es-text-wrap {
+		width: 600px;
+		margin: 25vh auto 0 auto;
+	}
+
+	.es-title {
+		font-size: $h1-size + 4rem;
+		font-weight: 400;
+		color: $default-dark-color;
+	}
+
+	.es-subtitle {
+		margin-bottom: 1.5rem;
+		font-size: $h2-size;
+		font-weight: 600;
+		text-transform: uppercase;
+		color: $default-dark-color;
+	}
+
+	.es-desc {
+		margin-bottom: 2.5rem;
+		font-size: $p-size;
+		color: $default-dark-color;
+	}
+
+	.es-btn {
+		@include btn-default;
+		font-size: $link-size + 0.25rem;
+		padding: 1rem 4rem;
+		border: none;
+		outline: none;
+		cursor: pointer;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.es-wrap .es-text-wrap {
+		width: 95%;
+	}
+}

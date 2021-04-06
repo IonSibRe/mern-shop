@@ -3,7 +3,7 @@ import welcome_img from "../../assets/img/about/welcome-img.jpg";
 
 const WelcomeSection = () => {
 	return (
-		<div className="ws-wrap section-center">
+		<div className="section-center ws-wrap">
 			<div className="ws-img-wrap">
 				<img src={welcome_img} alt="#" />
 			</div>
