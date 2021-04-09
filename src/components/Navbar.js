@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import logo_img from "../assets/img/mern-logo.jpg";
+import { CartContext } from "../context/CartContext";
 
 const pages = [
 	{
@@ -26,6 +27,8 @@ const pages = [
 ];
 
 const Navbar = () => {
+	const { amount } = useContext(CartContext);
+
 	return (
 		<nav className="nav">
 			<div className="nav-upper">
@@ -56,7 +59,11 @@ const Navbar = () => {
 							to="/cart"
 							className="nav-upper-link nav-cart-link"
 						>
-							<i className="fas fa-shopping-cart nav-upper-i"></i>
+							<i className="fas fa-shopping-cart nav-upper-i">
+								<span className="nav-cart-amount">
+									{amount}
+								</span>
+							</i>
 							Cart
 						</Link>
 						<Link

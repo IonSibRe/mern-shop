@@ -1,9 +1,12 @@
 import React from "react";
+import Navbar from "../components/Navbar";
+import CartShowcase from "../components/cart/CartShowcase";
 
 const Cart = () => {
 	return (
 		<div>
-			<h1>Cart Page</h1>
+			<Navbar />
+			<CartShowcase />
 		</div>
 	);
 };

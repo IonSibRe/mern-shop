@@ -72,6 +72,17 @@
 
 .nav-upper-i {
 	margin-right: 0.5rem;
+	position: relative;
+
+	.nav-cart-amount {
+		padding: 0.4rem 0.8rem;
+		position: absolute;
+		top: -16px;
+		left: -11px;
+		background-color: #007bff;
+		color: $default-light-color;
+		border-radius: 50%;
+	}
 }
 
 // ================= Lower =================

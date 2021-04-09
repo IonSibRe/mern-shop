@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { ProductsContext } from "../../context/ProductsContext";
 
-const ProductFilter = ({ data }) => {
-	const categories = ["all", ...new Set(data.map((item) => item.category))];
-	const manufacturers = [...new Set(data.map((item) => item.manufacturer))];
+const ProductFilter = () => {
+	const {
+		categories,
+		manufacturers,
+		currentMinPrice,
+		currentMaxPrice,
+		sortDefault,
+		sortPrice,
+	} = useContext(ProductsContext);
+
+	const [currentMaxPriceUI, setCurrentMaxPriceUI] = useState(currentMaxPrice);
+
+	useEffect(() => {
+		setCurrentMaxPriceUI(currentMaxPrice);
+	}, [currentMaxPrice]);
 
 	return (
 		<section className="filter-wrap">
@@ -13,7 +26,11 @@ const ProductFilter = ({ data }) => {
 
 			<div className="filter-sort-wrap filter-item-wrap">
 				<h3 className="filter-sort-title filter-subtitle">Sort</h3>
-				<select name="sort" className="filter-sort-select">
+				<select
+					name="sort"
+					className="filter-sort-select"
+					onChange={(e) => sortDefault(e.target.value)}
+				>
 					<option value="new">new</option>
 					<option value="price-low">price: low to high</option>
 					<option value="price-high">price: high to low</option>
@@ -23,11 +40,17 @@ const ProductFilter = ({ data }) => {
 			<div className="filter-price-wrap filter-item-wrap">
 				<h3 className="filter-price-title filter-subtitle">Price</h3>
 				<div className="filter-price-item-wrap">
-					<h4 className="filter-price-text">$0 - $100</h4>
+					<h4 className="filter-price-text">
+						${currentMinPrice} - ${currentMaxPriceUI}
+					</h4>
 					<input
 						type="range"
-						min="1"
-						max="100"
+						min={currentMinPrice}
+						max={currentMaxPrice}
+						onChange={(e) => {
+							sortPrice(e.target.value);
+							setCurrentMaxPriceUI(e.target.value);
+						}}
 						className="filter-price-input"
 						id="filter-price-input-id"
 					/>

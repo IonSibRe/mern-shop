@@ -1,0 +1,126 @@
+// ====================== Cart Showcase ======================
+.cart-showcase-wrap {
+	margin: 4rem auto;
+}
+
+.cart-heading-title {
+	margin-bottom: 2rem;
+	font-size: $h2-size;
+	font-weight: 400;
+	text-transform: capitalize;
+	color: $default-dark-color;
+}
+
+.cart-wrap {
+	border: 1px solid #ccc;
+}
+
+// Cart Header
+.cart-header-wrap {
+	padding: 1.5rem 0;
+	display: flex;
+	background-color: #f4f4f4;
+	border-bottom: 1px solid #ccc;
+
+	.cart-header-title {
+		flex: 1;
+		text-align: center;
+		font-size: $h3-size - 0.5rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		color: $default-dark-color;
+	}
+}
+
+// Cart Items
+
+.cart-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #ccc;
+
+	.cart-item-inner-wrap {
+		flex: 1;
+		text-align: center;
+	}
+
+	.cart-item-img {
+		width: 150px;
+	}
+
+	.cart-item-title {
+		text-transform: capitalize;
+	}
+
+	.cart-item-desc {
+		font-size: $h4-size;
+		font-weight: 400;
+		color: $default-dark-color;
+	}
+
+	.cart-qty-wrap {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		.cart-qty-sign {
+			margin: 0 1.5rem;
+			font-size: 2.5rem;
+			cursor: pointer;
+		}
+
+		.cart-item-amount {
+			font-size: $h4-size;
+		}
+	}
+
+	.cart-item-rm-btn {
+		font-size: $h4-size;
+		color: #f00;
+		background-color: transparent;
+		border: none;
+		outline: none;
+
+		.cart-item-rm-icon {
+			cursor: pointer;
+		}
+	}
+}
+
+.cart-btns-wrap {
+	margin-top: 2rem;
+	display: flex;
+	justify-content: flex-end;
+
+	.cart-clear-btn {
+		@include btn-default;
+		padding: 1.25rem 7rem;
+		border: none;
+		outline: none;
+		cursor: pointer;
+	}
+}
+
+// ====================== Empty Cart ======================
+.cart-empty-wrap {
+	text-align: center;
+
+	.cart-empty-icon {
+		font-size: 4rem;
+		margin-bottom: 1.25rem;
+	}
+
+	.cart-empty-title {
+		margin-bottom: 2rem;
+		font-size: $h2-size + 1rem;
+		font-weight: 400;
+		text-transform: capitalize;
+		color: $default-dark-color;
+	}
+
+	.cart-empty-link {
+		@include btn-default;
+		padding: 1rem 4rem;
+	}
+}
