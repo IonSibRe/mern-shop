@@ -4,13 +4,22 @@ import { ProductsContext } from "../../context/ProductsContext";
 
 const ProductFilter = () => {
 	const {
-		categories,
-		manufacturers,
+		allProducts,
 		currentMinPrice,
 		currentMaxPrice,
 		sortDefault,
 		sortPrice,
+		sortManufacturer,
+		manufacturersChecked,
 	} = useContext(ProductsContext);
+
+	const categories = [
+		"all",
+		...new Set(allProducts.map((item) => item.category)),
+	];
+	const manufacturers = [
+		...new Set(allProducts.map((item) => item.manufacturer)),
+	];
 
 	const [currentMaxPriceUI, setCurrentMaxPriceUI] = useState(currentMaxPrice);
 
@@ -47,6 +56,7 @@ const ProductFilter = () => {
 						type="range"
 						min={currentMinPrice}
 						max={currentMaxPrice}
+						defaultValue={currentMaxPrice}
 						onChange={(e) => {
 							sortPrice(e.target.value);
 							setCurrentMaxPriceUI(e.target.value);
@@ -70,14 +80,20 @@ const ProductFilter = () => {
 							<input
 								type="checkbox"
 								className="filter-manufacturer-input filter-input"
-								id="filter-manufacturer-input-id"
+								checked={
+									manufacturersChecked.indexOf(
+										manufacturer
+									) === -1
+										? false
+										: true
+								}
+								onChange={() => {
+									sortManufacturer(manufacturer);
+								}}
 							/>
-							<label
-								className="filter-manufacturer-text filter-text"
-								htmlFor="filter-manufacturer-input-id"
-							>
+							<span className="filter-manufacturer-text filter-text">
 								{manufacturer}
-							</label>
+							</span>
 						</div>
 					);
 				})}
@@ -96,14 +112,10 @@ const ProductFilter = () => {
 							<input
 								type="checkbox"
 								className="filter-category-input filter-input"
-								id="filter-category-input-id"
 							/>
-							<label
-								className="filter-category-text filter-text"
-								htmlFor="filter-category-input-id"
-							>
+							<span className="filter-category-text filter-text">
 								{category}
-							</label>
+							</span>
 						</div>
 					);
 				})}

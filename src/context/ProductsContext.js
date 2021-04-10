@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import { v4 as uuidv4 } from "uuid";
 import ProductsReducer from "../reducers/ProductsReducer";
 import {
@@ -113,14 +113,6 @@ const productsData = [
 	},
 ];
 
-const categories = [
-	"all",
-	...new Set(productsData.map((item) => item.category)),
-];
-const manufacturers = [
-	...new Set(productsData.map((item) => item.manufacturer)),
-];
-
 const initialState = {
 	allProducts: productsData,
 	currentProducts: productsData,
@@ -131,6 +123,9 @@ const initialState = {
 		...[...new Set(productsData.map((item) => parseFloat(item.price)))]
 	),
 	currentlySortedBy: "new",
+	manufacturersChecked: [
+		...new Set(productsData.map((item) => item.manufacturer)),
+	],
 };
 
 const ProductsProvider = ({ children }) => {
@@ -144,17 +139,25 @@ const ProductsProvider = ({ children }) => {
 	// Sort Price
 	const sortPrice = (price) => {
 		dispatch({ type: "SORT_PRICE", payload: price });
-		dispatch({ type: "SORT_DEFAULT", payload: state.currentlySortedBy });
 	};
+
+	// Sort Manufacturer
+	const sortManufacturer = (manufacturer) => {
+		dispatch({ type: "SORT_MANUFACTURER", payload: manufacturer });
+		dispatch({ type: "CALCULATE_NEW_PRICES" });
+	};
+
+	useEffect(() => {
+		dispatch({ type: "SORT_DEFAULT", payload: state.currentlySortedBy });
+	}, [state.currentProducts]);
 
 	return (
 		<ProductsContext.Provider
 			value={{
 				...state,
-				categories,
-				manufacturers,
 				sortDefault,
 				sortPrice,
+				sortManufacturer,
 			}}
 		>
 			{children}

@@ -7,7 +7,7 @@ const ProductsDisplay = ({ products }) => {
 	return (
 		<div className="products-showcase-inner-wrap">
 			{products.map((product) => {
-				const { id, title, price, img } = product;
+				const { id, title, price, manufacturer, img } = product;
 				let inCart;
 
 				cart.forEach((item) => {
@@ -28,6 +28,7 @@ const ProductsDisplay = ({ products }) => {
 							<h4 className="product-item-price">
 								${price.toFixed(2)}
 							</h4>
+							<h3>{manufacturer}</h3>
 							<button
 								disabled={inCart}
 								className={`product-add-btn ${
