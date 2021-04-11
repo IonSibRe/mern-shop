@@ -5,12 +5,14 @@ import { ProductsContext } from "../../context/ProductsContext";
 const ProductFilter = () => {
 	const {
 		allProducts,
+		manufacturersChecked,
+		categoriesChecked,
 		currentMinPrice,
 		currentMaxPrice,
 		sortDefault,
 		sortPrice,
 		sortManufacturer,
-		manufacturersChecked,
+		sortCategory,
 	} = useContext(ProductsContext);
 
 	const categories = [
@@ -112,6 +114,12 @@ const ProductFilter = () => {
 							<input
 								type="checkbox"
 								className="filter-category-input filter-input"
+								checked={
+									categoriesChecked.indexOf(category) === -1
+										? false
+										: true
+								}
+								onChange={() => sortCategory(category)}
 							/>
 							<span className="filter-category-text filter-text">
 								{category}

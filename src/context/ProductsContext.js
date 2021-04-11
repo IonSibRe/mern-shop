@@ -27,7 +27,7 @@ const productsData = [
 		id: uuidv4(),
 		title: "reproducer",
 		category: "reproducer",
-		manufacturer: "jbl",
+		manufacturer: "samsung",
 		price: 80.0,
 		img: home_showcase_img_2,
 	},
@@ -35,7 +35,7 @@ const productsData = [
 		id: uuidv4(),
 		title: "headphones",
 		category: "headphones",
-		manufacturer: "logitech",
+		manufacturer: "jbl",
 		price: 60.0,
 		img: home_showcase_img_3,
 	},
@@ -66,7 +66,7 @@ const productsData = [
 	{
 		id: uuidv4(),
 		title: "Lorem ipsum sit.",
-		category: "headphones",
+		category: "television",
 		manufacturer: "logitech",
 		price: 20.0,
 		img: home_showcase_img_7,
@@ -75,7 +75,7 @@ const productsData = [
 		id: uuidv4(),
 		title: "Lorem ipsum sit.",
 		category: "reproducer",
-		manufacturer: "jbl",
+		manufacturer: "samsung",
 		price: 45.0,
 		img: home_showcase_img_8,
 	},
@@ -83,7 +83,7 @@ const productsData = [
 		id: uuidv4(),
 		title: "Lorem ipsum sit.",
 		category: "reproducer",
-		manufacturer: "jbl",
+		manufacturer: "logitech",
 		price: 40.0,
 		img: home_showcase_img_5,
 	},
@@ -106,7 +106,7 @@ const productsData = [
 	{
 		id: uuidv4(),
 		title: "Lorem ipsum sit.",
-		category: "reproducer",
+		category: "headphones",
 		manufacturer: "jbl",
 		price: 20.0,
 		img: home_showcase_img_8,
@@ -126,6 +126,7 @@ const initialState = {
 	manufacturersChecked: [
 		...new Set(productsData.map((item) => item.manufacturer)),
 	],
+	categoriesChecked: ["all"],
 };
 
 const ProductsProvider = ({ children }) => {
@@ -147,9 +148,19 @@ const ProductsProvider = ({ children }) => {
 		dispatch({ type: "CALCULATE_NEW_PRICES" });
 	};
 
+	// Sort Category
+	const sortCategory = (category) => {
+		dispatch({ type: "SORT_CATEGORY", payload: category });
+		dispatch({ type: "CALCULATE_NEW_PRICES" });
+	};
+
 	useEffect(() => {
 		dispatch({ type: "SORT_DEFAULT", payload: state.currentlySortedBy });
-	}, [state.currentProducts]);
+	}, [state.currentProducts, state.currentlySortedBy]);
+
+	useEffect(() => {
+		console.log(state.categoriesChecked);
+	}, [state.categoriesChecked]);
 
 	return (
 		<ProductsContext.Provider
@@ -158,6 +169,7 @@ const ProductsProvider = ({ children }) => {
 				sortDefault,
 				sortPrice,
 				sortManufacturer,
+				sortCategory,
 			}}
 		>
 			{children}
