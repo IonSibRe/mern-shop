@@ -8,7 +8,7 @@ const ProductCard = () => {
 	};
 
 	return (
-		<div className="product-card section-center" style={bgImage}>
+		<section className="product-card section-center" style={bgImage}>
 			<div className="product-text-wrap">
 				<h2 className="product-card-title">
 					T12 Bluetooth <strong>In-Ear</strong> Headset
@@ -21,7 +21,7 @@ const ProductCard = () => {
 					shop now
 				</Link>
 			</div>
-		</div>
+		</section>
 	);
 };
 

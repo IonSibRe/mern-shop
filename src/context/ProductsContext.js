@@ -116,6 +116,7 @@ const productsData = [
 const initialState = {
 	allProducts: productsData,
 	currentProducts: productsData,
+	isLoading: false,
 	currentMinPrice: Math.min(
 		...[...new Set(productsData.map((item) => parseFloat(item.price)))]
 	),
@@ -144,23 +145,25 @@ const ProductsProvider = ({ children }) => {
 
 	// Sort Manufacturer
 	const sortManufacturer = (manufacturer) => {
-		dispatch({ type: "SORT_MANUFACTURER", payload: manufacturer });
+		dispatch({
+			type: "SORT_CHECKBOXES",
+			payload: { value: manufacturer, type: "sortManufacturer" },
+		});
 		dispatch({ type: "CALCULATE_NEW_PRICES" });
 	};
 
 	// Sort Category
 	const sortCategory = (category) => {
-		dispatch({ type: "SORT_CATEGORY", payload: category });
+		dispatch({
+			type: "SORT_CHECKBOXES",
+			payload: { value: category, type: "sortCategory" },
+		});
 		dispatch({ type: "CALCULATE_NEW_PRICES" });
 	};
 
 	useEffect(() => {
 		dispatch({ type: "SORT_DEFAULT", payload: state.currentlySortedBy });
 	}, [state.currentProducts, state.currentlySortedBy]);
-
-	useEffect(() => {
-		console.log(state.categoriesChecked);
-	}, [state.categoriesChecked]);
 
 	return (
 		<ProductsContext.Provider

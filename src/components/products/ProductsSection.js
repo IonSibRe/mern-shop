@@ -1,11 +1,12 @@
 import React, { useState, useContext } from "react";
+import { ProductsContext } from "../../context/ProductsContext";
 import ProductFilter from "./ProductFilter";
 import ProductsDisplay from "./ProductsDisplay";
 import Pagination from "./Pagination";
-import { ProductsContext } from "../../context/ProductsContext";
+import loaderSpinner from "../../assets/loader-spinner.gif";
 
 const ProductsSection = () => {
-	const { currentProducts } = useContext(ProductsContext);
+	const { currentProducts, isLoading } = useContext(ProductsContext);
 
 	const [currentPage, setCurrentPage] = useState(1);
 	const productsPerPage = 9;
@@ -22,12 +23,24 @@ const ProductsSection = () => {
 		<section className="ps-wrap section-center">
 			<ProductFilter />
 			<section className="products-showcase-wrap">
-				<ProductsDisplay products={currentDisplayProducts} />
-				<Pagination
-					productsPerPage={productsPerPage}
-					totalProducts={currentProducts.length}
-					setCurrentPage={setCurrentPage}
-				/>
+				{isLoading ? (
+					<div className="products-loader-wrap">
+						<img
+							src={loaderSpinner}
+							alt="#"
+							className="products-loader-spinner"
+						/>
+					</div>
+				) : (
+					<>
+						<ProductsDisplay products={currentDisplayProducts} />
+						<Pagination
+							productsPerPage={productsPerPage}
+							totalProducts={currentProducts.length}
+							setCurrentPage={setCurrentPage}
+						/>
+					</>
+				)}
 			</section>
 		</section>
 	);

@@ -2,7 +2,7 @@ import React from "react";
 
 const Newsletter = () => {
 	return (
-		<div className="nl-main-wrap">
+		<section className="nl-main-wrap">
 			<div className="nl-inner-wrap section-center">
 				<div className="nl-text-wrap">
 					<h2 className="nl-title">Sign Up For Newsletters</h2>
@@ -24,7 +24,7 @@ const Newsletter = () => {
 					</form>
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 };
 

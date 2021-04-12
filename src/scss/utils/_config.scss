@@ -11,7 +11,6 @@ $esm-width: 425px;
 $card-height: 250px;
 
 // ------------- Typography -------------
-
 $h1-size: 7rem;
 $h2-size: 3rem;
 $h3-size: 2.5rem;
@@ -32,7 +31,6 @@ $default-product-desc-color: #828282;
 $default-light-blue-color: #266cfb;
 
 // ============= Mixins =============
-
 @mixin section-center {
 	width: $default-width;
 	margin: 0 auto;
@@ -54,6 +52,9 @@ $default-light-blue-color: #266cfb;
 	border-radius: 5px;
 	color: $default-light-color;
 	background-color: $default-light-blue-color;
+	border: none;
+	outline: none;
+	cursor: pointer;
 	transition: all 0.25s ease-in-out;
 
 	&:hover {
@@ -93,8 +94,8 @@ html {
 }
 
 body {
-	font-family: $default-font-family;
 	overflow-x: hidden;
+	font-family: $default-font-family;
 	background-color: $body-bg;
 }
 

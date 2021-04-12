@@ -78,7 +78,7 @@ const TripleSlider = () => {
 	}, [firstSlider, secondSlider, thirdSlider]);
 
 	return (
-		<div className="ts-wrap section-center">
+		<section className="ts-wrap section-center">
 			<TripleSliderSingle
 				data={data}
 				slider={firstSlider}
@@ -100,7 +100,7 @@ const TripleSlider = () => {
 				rowCount={thirdRowCount}
 				title={"television & video"}
 			/>
-		</div>
+		</section>
 	);
 };
 

@@ -120,7 +120,7 @@ const FeaturedProducts = () => {
 	}, [slider]);
 
 	return (
-		<div className="fp section-center">
+		<section className="fp section-center">
 			<div className="home-showcase-title-wrap">
 				<ShowcaseHeading slider={slider} title={"featured products"} />
 			</div>
@@ -128,7 +128,7 @@ const FeaturedProducts = () => {
 				<FeaturedProductsRow data={data} row={0} rowCount={rowCount} />
 				<FeaturedProductsRow data={data} row={1} rowCount={rowCount} />
 			</div>
-		</div>
+		</section>
 	);
 };
 

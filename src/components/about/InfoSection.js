@@ -24,7 +24,7 @@ const InfoSection = () => {
 	];
 
 	return (
-		<div className="info-section-wrap section-center">
+		<section className="info-section-wrap section-center">
 			{data.map((item) => {
 				const { id, title, desc } = item;
 
@@ -35,7 +35,7 @@ const InfoSection = () => {
 					</div>
 				);
 			})}
-		</div>
+		</section>
 	);
 };
 

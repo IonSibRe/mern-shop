@@ -29,7 +29,7 @@ const CartReducer = (state, action) => {
 					const total = parseFloat(item.total);
 
 					if (action.payload.type === "inc") {
-						const itemTotal = price + total;
+						const itemTotal = total + price;
 						return {
 							...item,
 							amount: item.amount + 1,
@@ -37,7 +37,7 @@ const CartReducer = (state, action) => {
 						};
 					}
 					if (action.payload.type === "dec" && item.amount > 1) {
-						const itemTotal = price - total;
+						const itemTotal = total - price;
 						return {
 							...item,
 							amount: item.amount - 1,

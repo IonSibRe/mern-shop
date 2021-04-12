@@ -40,51 +40,47 @@ const MainShowcase = () => {
 	});
 
 	return (
-		<>
-			<div className="slider">
-				{showcaseData.map((slide) => {
-					const { id, img, title, desc } = slide;
+		<section className="slider">
+			{showcaseData.map((slide) => {
+				const { id, img, title, desc } = slide;
 
-					const imgStyling = {
-						background: `url(${img}) no-repeat
+				const imgStyling = {
+					background: `url(${img}) no-repeat
 							center center/cover`,
-					};
+				};
 
-					return (
-						<div
-							className={`slide ${
-								id === current ? "current" : ""
-							}`}
-							key={id}
-							style={imgStyling}
-						>
-							<div className="slide-text-wrap">
-								<div className="slide-text-inner-wrap">
-									<h2 className="slide-title">{title}</h2>
-									<p className="slide-desc">{desc}</p>
-									<Link to="/products" className="slide-link">
-										shop now
-									</Link>
-								</div>
+				return (
+					<div
+						className={`slide ${id === current ? "current" : ""}`}
+						key={id}
+						style={imgStyling}
+					>
+						<div className="slide-text-wrap">
+							<div className="slide-text-inner-wrap">
+								<h2 className="slide-title">{title}</h2>
+								<p className="slide-desc">{desc}</p>
+								<Link to="/products" className="slide-link">
+									shop now
+								</Link>
 							</div>
 						</div>
+					</div>
+				);
+			})}
+			<div className="dots">
+				{showcaseData.map((slide) => {
+					return (
+						<span
+							key={slide.id}
+							onClick={() => setCurrent(slide.id)}
+							className={`dot ${
+								slide.id === current ? "active" : ""
+							}`}
+						></span>
 					);
 				})}
-				<div className="dots">
-					{showcaseData.map((slide) => {
-						return (
-							<span
-								key={slide.id}
-								onClick={() => setCurrent(slide.id)}
-								className={`dot ${
-									slide.id === current ? "active" : ""
-								}`}
-							></span>
-						);
-					})}
-				</div>
 			</div>
-		</>
+		</section>
 	);
 };
 

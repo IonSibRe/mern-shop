@@ -76,6 +76,17 @@
 	flex: 3;
 }
 
+// loader Spinner
+.products-loader-wrap {
+	display: flex;
+	justify-content: center;
+
+	.products-loader-spinner {
+		margin-top: 10rem;
+		width: 250px;
+	}
+}
+
 // Products Display
 .products-showcase-inner-wrap {
 	margin-bottom: 4rem;
@@ -107,9 +118,6 @@
 		.product-add-btn {
 			@include btn-default;
 			margin-bottom: 2rem;
-			border: none;
-			outline: none;
-			cursor: pointer;
 		}
 	}
 }

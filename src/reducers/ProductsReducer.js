@@ -49,64 +49,70 @@ const ProductsReducer = (state, action) => {
 				),
 			};
 
-		case "SORT_MANUFACTURER":
-			const currentIndex = state.manufacturersChecked.indexOf(
-				action.payload
-			);
-			const newChecked = [...state.manufacturersChecked];
+		case "SORT_CHECKBOXES":
+			let currentIndex;
+			let newChecked;
+			let updatedProducts = [];
 
-			currentIndex === -1
-				? newChecked.push(action.payload)
-				: newChecked.splice(currentIndex, 1);
+			// Sort Category
+			if (action.payload.type === "sortCategory") {
+				currentIndex = state.categoriesChecked.indexOf(
+					action.payload.value
+				);
+				newChecked = [...state.categoriesChecked];
 
-			const updatedProducts = [];
+				currentIndex === -1
+					? newChecked.push(action.payload.value)
+					: newChecked.splice(currentIndex, 1);
 
-			state.allProducts.forEach((product) => {
-				if (
-					newChecked.includes(product.manufacturer) &&
-					(state.categoriesChecked.includes(product.category) ||
-						state.categoriesChecked.includes("all"))
-				) {
-					updatedProducts.push(product);
-				}
-			});
+				state.allProducts.forEach((product) => {
+					if (
+						(newChecked.includes(product.category) ||
+							newChecked.includes("all")) &&
+						state.manufacturersChecked.includes(
+							product.manufacturer
+						)
+					) {
+						updatedProducts.push(product);
+					}
+				});
 
-			return {
-				...state,
-				manufacturersChecked: newChecked,
-				currentProducts: updatedProducts,
-			};
+				return {
+					...state,
+					categoriesChecked: newChecked,
+					currentProducts: updatedProducts,
+				};
+			}
 
-		case "SORT_CATEGORY":
-			const currentCategoryIndex = state.categoriesChecked.indexOf(
-				action.payload
-			);
+			// Sort Manufacturer
+			if (action.payload.type === "sortManufacturer") {
+				currentIndex = state.manufacturersChecked.indexOf(
+					action.payload.value
+				);
+				newChecked = [...state.manufacturersChecked];
 
-			const newCategoriesChecked = [...state.categoriesChecked];
+				currentIndex === -1
+					? newChecked.push(action.payload.value)
+					: newChecked.splice(currentIndex, 1);
 
-			currentCategoryIndex === -1
-				? newCategoriesChecked.push(action.payload)
-				: newCategoriesChecked.splice(currentCategoryIndex, 1);
+				state.allProducts.forEach((product) => {
+					if (
+						newChecked.includes(product.manufacturer) &&
+						(state.categoriesChecked.includes(product.category) ||
+							state.categoriesChecked.includes("all"))
+					) {
+						updatedProducts.push(product);
+					}
+				});
 
-			let sortedProducts = [];
+				return {
+					...state,
+					manufacturersChecked: newChecked,
+					currentProducts: updatedProducts,
+				};
+			}
 
-			state.allProducts.forEach((product) => {
-				if (
-					(newCategoriesChecked.includes(product.category) ||
-						newCategoriesChecked.includes("all")) &&
-					state.manufacturersChecked.includes(product.manufacturer)
-				) {
-					sortedProducts.push(product);
-				}
-			});
-
-			console.log(sortedProducts);
-
-			return {
-				...state,
-				categoriesChecked: newCategoriesChecked,
-				currentProducts: sortedProducts,
-			};
+			return;
 
 		case "CALCULATE_NEW_PRICES":
 			const newPrices = [
@@ -114,6 +120,15 @@ const ProductsReducer = (state, action) => {
 					state.currentProducts.map((product) => product.price)
 				),
 			];
+
+			// No current products
+			if (newPrices.length === 0) {
+				return {
+					...state,
+					currentMaxPrice: 0,
+					currentMinPrice: 0,
+				};
+			}
 
 			return {
 				...state,

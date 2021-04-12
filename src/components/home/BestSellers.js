@@ -74,7 +74,7 @@ const BestSellers = () => {
 	}, [slider]);
 
 	return (
-		<div className="best-sellers-main-wrap section-center">
+		<section className="best-sellers-main-wrap section-center">
 			<div className="home-showcase-title-wrap">
 				<ShowcaseHeading
 					slider={slider}
@@ -86,7 +86,7 @@ const BestSellers = () => {
 				<BestSellersRow data={data} row={0} rowCount={rowCount} />
 				<BestSellersRow data={data} row={1} rowCount={rowCount} />
 			</div>
-		</div>
+		</section>
 	);
 };
 

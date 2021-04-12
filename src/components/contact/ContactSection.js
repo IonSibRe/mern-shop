@@ -2,7 +2,7 @@ import React from "react";
 
 const ContactSection = () => {
 	return (
-		<div className="contact-section-wrap section-center">
+		<section className="contact-section-wrap section-center">
 			<div className="contact-section-info-wrap">
 				<div className="contact-section-info-inner-wrap">
 					<div className="contact-section-item">
@@ -107,7 +107,7 @@ const ContactSection = () => {
 					</form>
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 };
 
