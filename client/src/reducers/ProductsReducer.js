@@ -1,5 +1,47 @@
 const ProductsReducer = (state, action) => {
 	switch (action.type) {
+		case "GET_PRODUCTS":
+			const products = action.payload.data.map((product) => {
+				const img = action.payload.img;
+				return { ...product, img };
+			});
+
+			const minPrice = Math.min(
+				...[
+					...new Set(
+						action.payload.data.map((item) =>
+							parseFloat(item.price)
+						)
+					),
+				]
+			);
+
+			const maxPrice = Math.max(
+				...[
+					...new Set(
+						action.payload.data.map((item) =>
+							parseFloat(item.price)
+						)
+					),
+				]
+			);
+
+			const manufacturersChecked = [
+				...new Set(
+					action.payload.data.map((item) => item.manufacturer)
+				),
+			];
+
+			return {
+				...state,
+				allProducts: products,
+				currentProducts: products,
+				isLoading: false,
+				currentMinPrice: minPrice,
+				currentMaxPrice: maxPrice,
+				manufacturersChecked,
+			};
+
 		case "SORT_DEFAULT":
 			if (action.payload === "new") {
 				return {

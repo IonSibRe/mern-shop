@@ -7,15 +7,15 @@ const ProductsDisplay = ({ products }) => {
 	return (
 		<div className="products-showcase-inner-wrap">
 			{products.map((product) => {
-				const { id, title, price, img } = product;
+				const { _id, title, price, img } = product;
 				let inCart;
 
 				cart.forEach((item) => {
-					if (item.id === id) inCart = true;
+					if (item._id === _id) inCart = true;
 				});
 
 				return (
-					<div className="product-showcase-item" key={id}>
+					<div className="product-showcase-item" key={_id}>
 						<div className="product-item-img-wrap">
 							<img
 								src={img}
@@ -33,7 +33,9 @@ const ProductsDisplay = ({ products }) => {
 								className={`product-add-btn ${
 									inCart && "btn-disabled"
 								}`}
-								onClick={() => addToCart(id, title, price, img)}
+								onClick={() =>
+									addToCart(_id, title, price, img)
+								}
 							>
 								{inCart ? "in cart" : "add to cart"}
 							</button>

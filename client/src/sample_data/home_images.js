@@ -3,6 +3,9 @@ import home_slider_img_1 from "../assets/img/home/home-slider-img-1.png";
 import home_slider_img_2 from "../assets/img/home/home-slider-img-2.png";
 import home_slider_img_3 from "../assets/img/home/home-slider-img-3.png";
 
+// Products
+import productImage from "../assets/img/home/home-sliders-img-1.jpg";
+
 // Featured Products
 import home_showcase_img_1 from "../assets/img/home/home-sliders-img-1.jpg";
 import home_showcase_img_2 from "../assets/img/home/home-sliders-img-2.jpg";
@@ -62,3 +65,5 @@ export {
 
 export { home_pc_img_1, home_pc_img_2, home_pc_img_3, home_pc_img_4 };
 export { footer_paypal, footer_mastercard, footer_visa };
+
+export { productImage };
