@@ -4,6 +4,7 @@ import {
 	Home,
 	About,
 	Products,
+	SingleItem,
 	Contact,
 	Cart,
 	Login,
@@ -11,6 +12,7 @@ import {
 	Checkout,
 	Error,
 } from "./pages";
+
 import { HomeSlidersProvider } from "./context/HomeSlidersContext";
 import "./scss/main.scss";
 
@@ -26,8 +28,11 @@ const App = () => {
 				<Route path="/about">
 					<About />
 				</Route>
-				<Route path="/products">
+				<Route exact path="/products">
 					<Products />
+				</Route>
+				<Route exact path="/products/:id">
+					<SingleItem />
 				</Route>
 				<Route path="/contact">
 					<Contact />

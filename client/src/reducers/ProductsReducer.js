@@ -77,11 +77,9 @@ const ProductsReducer = (state, action) => {
 
 			newProducts = newProducts.filter(
 				(product) =>
-					(state.manufacturersChecked.includes(
-						product.manufacturer
-					) &&
-						state.categoriesChecked.includes(product.category)) ||
-					state.categoriesChecked.includes("all")
+					state.manufacturersChecked.includes(product.manufacturer) &&
+					(state.categoriesChecked.includes(product.category) ||
+						state.categoriesChecked.includes("all"))
 			);
 
 			return {

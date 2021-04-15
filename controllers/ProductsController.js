@@ -19,6 +19,31 @@ const getProducts = async (req, res, next) => {
 	}
 };
 
+// @desc Get Single Product
+// @route GET /api/v1/products/:id
+const getProduct = async (req, res, next) => {
+	try {
+		const product = await Product.findById(req.params.id);
+
+		if (!product) {
+			return res.status(404).json({
+				success: false,
+				error: "No product found",
+			});
+		}
+
+		return res.status(200).json({
+			success: true,
+			data: product,
+		});
+	} catch (err) {
+		return res.status(500).json({
+			success: false,
+			error: "Server Error",
+		});
+	}
+};
+
 // @desc add single product
 // @route POST /api/v1/products
 const addProduct = async (req, res, next) => {
@@ -108,4 +133,10 @@ const deleteProduct = async (req, res, next) => {
 	}
 };
 
-module.exports = { getProducts, addProduct, addProducts, deleteProduct };
+module.exports = {
+	getProducts,
+	getProduct,
+	addProduct,
+	addProducts,
+	deleteProduct,
+};

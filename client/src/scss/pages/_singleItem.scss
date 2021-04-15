@@ -1,0 +1,83 @@
+// ====================== Single Item Wrap ======================
+.single-item-wrap {
+	margin: 4rem auto;
+	display: flex;
+}
+
+.single-item-text-wrap {
+	flex: 1;
+	border: 1px solid #ccc;
+	border-radius: 10px;
+
+	.single-item-inner-text-wrap {
+		margin: 6rem 2rem;
+	}
+
+	.single-item-title {
+		margin-bottom: 0.5rem;
+		font-size: $h2-size;
+		font-weight: 400;
+		text-transform: capitalize;
+		color: $default-dark-color;
+	}
+
+	.single-item-manufacturer {
+		margin-bottom: 0.5rem;
+		font-size: $h3-size - 0.5rem;
+		font-weight: 600;
+		text-transform: capitalize;
+		color: $default-dark-color;
+	}
+
+	.single-item-price {
+		font-size: $h3-size;
+		font-weight: 700;
+		text-transform: capitalize;
+		color: $default-dark-color;
+	}
+
+	.single-item-desc {
+		margin: 2.5rem 0;
+		padding: 2rem 0;
+		font-size: $p-size;
+		color: $default-product-desc-color;
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+	}
+
+	.single-item-cart-control {
+		display: flex;
+	}
+
+	.single-item-qty-wrap {
+		@include flex-center;
+		margin-right: 2rem;
+		padding: 1rem 0;
+		border: 1px solid #ccc;
+
+		.single-item-qty-sign {
+			margin: 0 1.5rem;
+			font-size: 2.5rem;
+			cursor: pointer;
+		}
+
+		.single-item-amount {
+			font-size: $h4-size;
+		}
+	}
+
+	.single-item-add-btn {
+		@include btn-default;
+		font-weight: 600;
+		padding: 2rem 5rem;
+	}
+}
+
+.single-item-img-wrap {
+	flex: 1;
+	text-align: center;
+
+	.single-item-img {
+		width: 500px;
+	}
+}

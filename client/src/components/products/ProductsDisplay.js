@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 
 const ProductsDisplay = ({ products }) => {
@@ -17,6 +18,10 @@ const ProductsDisplay = ({ products }) => {
 				return (
 					<div className="product-showcase-item" key={_id}>
 						<div className="product-item-img-wrap">
+							<Link
+								to={`/products/${_id}`}
+								className="product-showcase-item-link"
+							></Link>
 							<img
 								src={img}
 								alt={title}

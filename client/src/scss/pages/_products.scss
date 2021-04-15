@@ -97,9 +97,19 @@
 
 .product-showcase-item {
 	border: 1px solid #ccc;
+	position: relative;
+
+	.product-showcase-item-link {
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+	}
 
 	.product-item-text-wrap {
 		text-align: center;
+		z-index: 999;
 
 		.product-item-title {
 			margin-bottom: 0.5rem;
@@ -113,17 +123,26 @@
 			margin-bottom: 1rem;
 			font-size: $h4-size;
 			color: $default-dark-color;
+			z-index: 999;
 		}
 
 		.product-add-btn {
 			@include btn-default;
 			margin-bottom: 2rem;
+			z-index: 999;
 		}
 	}
 }
 
 .product-item-img-wrap {
 	text-align: center;
+	position: relative;
+
+	.product-showcase-item-link {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+	}
 
 	.product-item-img {
 		width: 250px;
