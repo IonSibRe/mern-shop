@@ -1,0 +1,61 @@
+// ====================== Auth Section ======================
+
+.auth-wrap {
+	margin-top: 25vh;
+	display: flex;
+	justify-content: center;
+}
+
+.auth-title {
+	margin-bottom: 2rem;
+	text-align: center;
+	font-size: $h1-size - 2rem;
+	font-weight: 400;
+	text-transform: uppercase;
+	color: $default-dark-color;
+}
+
+.auth-card {
+	width: 600px;
+	padding: 4rem 0 6rem 0;
+	background-color: #f4f4f4;
+	box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+
+	.auth-card-inner-wrap {
+		width: 80%;
+		margin: 0 auto;
+
+		& > * {
+			display: block;
+		}
+
+		// Switch to Register
+		.auth-switch-wrap {
+			margin-bottom: 2.5rem;
+		}
+
+		.auth-switch-text {
+			font-size: $p-size;
+			color: $default-dark-color;
+		}
+
+		.auth-switch-link {
+			font-size: $p-size;
+			color: $default-light-blue-color;
+		}
+
+		.auth-input {
+			width: 100%;
+			margin-bottom: 2.5rem;
+			padding: 1rem 0 1rem 1rem;
+			font-size: $link-size + 0.25rem;
+			border: 1px solid #ccc;
+			outline: none;
+		}
+
+		.auth-btn {
+			@include btn-default;
+			display: block;
+		}
+	}
+}
