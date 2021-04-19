@@ -9,10 +9,10 @@ import {
 	Cart,
 	Login,
 	Register,
+	Profile,
 	Checkout,
 	Error,
 } from "./pages";
-
 import { HomeSlidersProvider } from "./context/HomeSlidersContext";
 import "./scss/main.scss";
 
@@ -45,6 +45,9 @@ const App = () => {
 				</Route>
 				<Route path="/register">
 					<Register />
+				</Route>
+				<Route path="/profile">
+					<Profile />
 				</Route>
 				<Route path="/checkout">
 					<Checkout />

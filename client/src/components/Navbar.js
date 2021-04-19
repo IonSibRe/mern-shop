@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import logo_img from "../assets/img/mern-logo.jpg";
+import { AuthContext } from "../context/AuthContext";
 import { CartContext } from "../context/CartContext";
+import logo_img from "../assets/img/mern-logo.jpg";
 
 const pages = [
 	{
@@ -27,6 +28,7 @@ const pages = [
 ];
 
 const Navbar = () => {
+	const { loggedIn, user, logout } = useContext(AuthContext);
 	const { amount } = useContext(CartContext);
 
 	return (
@@ -55,24 +57,54 @@ const Navbar = () => {
 						</form>
 					</div>
 					<div className="nav-user-wrap">
-						<Link
-							to="/cart"
-							className="nav-upper-link nav-cart-link"
-						>
-							<i className="fas fa-shopping-cart nav-upper-i">
-								<span className="nav-cart-amount">
-									{amount}
-								</span>
-							</i>
-							Cart
-						</Link>
-						<Link
-							to="/login"
-							className="nav-upper-link nav-sign-in-link"
-						>
-							<i className="fas fa-user nav-upper-i"></i>
-							Sign In
-						</Link>
+						<div className="nav-cart-wrap">
+							<Link
+								to="/cart"
+								className="nav-upper-link nav-cart-link"
+							>
+								<i className="fas fa-shopping-cart nav-upper-i">
+									<span className="nav-cart-amount">
+										{amount}
+									</span>
+								</i>
+								Cart
+							</Link>
+						</div>
+						{loggedIn ? (
+							<div className="nav-user-dropdown">
+								<Link
+									to="/profile"
+									className="nav-upper-link nav-sign-in-link dropbtn"
+								>
+									<i className="fas fa-user nav-upper-i"></i>
+									{user.username}
+								</Link>
+								<div className="nav-user-dropdown-content">
+									<Link
+										to="/profile"
+										className="nav-user-dropdown-link"
+									>
+										Profile
+									</Link>
+									<button
+										className="nav-user-dropdown-link nav-user-logout-link"
+										onClick={logout}
+									>
+										Logout
+									</button>
+								</div>
+							</div>
+						) : (
+							<div className="nav-login-wrap">
+								<Link
+									to="/login"
+									className="nav-upper-link nav-sign-in-link"
+								>
+									<i className="fas fa-user nav-upper-i"></i>
+									Sign In
+								</Link>
+							</div>
+						)}
 					</div>
 				</div>
 			</div>

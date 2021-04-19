@@ -3,16 +3,19 @@
 .auth-wrap {
 	margin-top: 25vh;
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	align-items: center;
 }
 
-.auth-title {
-	margin-bottom: 2rem;
-	text-align: center;
-	font-size: $h1-size - 2rem;
-	font-weight: 400;
-	text-transform: uppercase;
-	color: $default-dark-color;
+.alert-wrap {
+	margin: 2rem 0;
+	padding: 1.5rem 3rem;
+	background-color: #e45d6b;
+	border-radius: 5px;
+
+	.alert-text {
+		text-transform: capitalize;
+	}
 }
 
 .auth-card {
@@ -20,6 +23,15 @@
 	padding: 4rem 0 6rem 0;
 	background-color: #f4f4f4;
 	box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
+
+	.auth-title {
+		margin-bottom: 2rem;
+		text-align: center;
+		font-size: $h1-size - 2rem;
+		font-weight: 400;
+		text-transform: uppercase;
+		color: $default-dark-color;
+	}
 
 	.auth-card-inner-wrap {
 		width: 80%;

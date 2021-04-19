@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 const path = require("path");
+const cors = require("cors");
 const products = require("./routes/products");
 const auth = require("./routes/auth");
 const reviews = require("./routes/reviews");
@@ -15,6 +16,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
+app.use(cors());
 app.use("/api/v1/products", products);
 app.use("/api/v1/user", auth);
 app.use("/api/v1/reviews", reviews);

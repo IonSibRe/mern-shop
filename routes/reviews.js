@@ -4,7 +4,7 @@ const verify = require("./verifyToken");
 
 // Placeholder
 router.get("/", verify, (req, res) => {
-	res.send(req.user);
+	res.json({ success: true, user: req.user });
 });
 
 module.exports = router;
