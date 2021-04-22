@@ -15,7 +15,6 @@ const AuthProvider = ({ children }) => {
 	const url = "http://localhost:5000/api/v1/user";
 
 	const login = async (email, password) => {
-		console.log("called");
 		try {
 			const res = await fetch(`${url}/login`, {
 				method: "POST",
@@ -68,7 +67,6 @@ const AuthProvider = ({ children }) => {
 				login(email, password);
 			}
 
-			console.log(data);
 			dispatch({ type: "REGISTER", payload: data });
 		} catch (err) {
 			console.log(err);
@@ -86,7 +84,6 @@ const AuthProvider = ({ children }) => {
 			});
 
 			const data = await res.json();
-			console.log(data);
 			if (data.success) {
 				dispatch({ type: "GET_USER", payload: data });
 			}
@@ -105,13 +102,8 @@ const AuthProvider = ({ children }) => {
 
 		if (localLogin) {
 			getCurrentUser(localLogin._id, localLogin.token);
-			console.log(localLogin);
 		}
 	}, []);
-
-	useEffect(() => {
-		console.log(state);
-	}, [state]);
 
 	return (
 		<AuthContext.Provider

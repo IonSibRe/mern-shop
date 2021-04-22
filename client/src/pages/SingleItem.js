@@ -1,10 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { productImage } from "../sample_data/home_images";
-
 import Navbar from "../components/Navbar";
+import Newsletter from "../components/Newsletter";
+import Footer from "../components/Footer";
 import { CartContext } from "../context/CartContext";
+import { productImage } from "../sample_data/home_images";
 
 const SingleItem = () => {
 	const { id } = useParams();
@@ -116,6 +117,8 @@ const SingleItem = () => {
 					</div>
 				</div>
 			</section>
+			<Newsletter />
+			<Footer />
 		</>
 	);
 };

@@ -4,6 +4,7 @@
 	display: flex;
 }
 
+// Text
 .single-item-text-wrap {
 	flex: 1;
 	border: 1px solid #ccc;
@@ -25,7 +26,7 @@
 		margin-bottom: 0.5rem;
 		font-size: $h3-size - 0.5rem;
 		font-weight: 600;
-		text-transform: capitalize;
+		text-transform: uppercase;
 		color: $default-dark-color;
 	}
 
@@ -52,7 +53,6 @@
 	.single-item-qty-wrap {
 		@include flex-center;
 		margin-right: 2rem;
-		padding: 1rem 0;
 		border: 1px solid #ccc;
 
 		.single-item-qty-sign {
@@ -68,16 +68,98 @@
 
 	.single-item-add-btn {
 		@include btn-default;
+		font-size: $link-size;
 		font-weight: 600;
-		padding: 2rem 5rem;
+		padding: 1.5rem 4rem;
 	}
 }
 
+// Image
 .single-item-img-wrap {
 	flex: 1;
 	text-align: center;
 
 	.single-item-img {
 		width: 500px;
+	}
+}
+
+@media screen and (max-width: 1300px) {
+	// Image
+	.single-item-img-wrap .single-item-img {
+		width: 400px;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.single-item-wrap {
+		flex-direction: column;
+	}
+
+	// Text
+	.single-item-text-wrap {
+		border-radius: 0;
+	}
+
+	.single-item-text-wrap .single-item-inner-text-wrap {
+		text-align: center;
+	}
+
+	.single-item-text-wrap .single-item-title {
+		font-size: $h2-size + 1rem;
+	}
+
+	.single-item-text-wrap .single-item-manufacturer {
+		font-size: $h3-size + 0.25rem;
+	}
+
+	.single-item-text-wrap .single-item-price {
+		font-size: $h3-size + 0.25rem;
+	}
+
+	.single-item-text-wrap .single-item-desc {
+		font-size: $p-size + 0.25rem;
+	}
+
+	.single-item-cart-control {
+		justify-content: center;
+	}
+}
+
+@media screen and (max-width: 425px) {
+	// Text
+	.single-item-text-wrap .single-item-inner-text-wrap {
+		margin: 6rem 0;
+	}
+
+	.single-item-text-wrap .single-item-title {
+		font-size: $h2-size + 0.5rem;
+	}
+
+	.single-item-text-wrap .single-item-manufacturer {
+		font-size: $h3-size - 0.25rem;
+	}
+
+	.single-item-text-wrap .single-item-price {
+		font-size: $h3-size - 0.25rem;
+	}
+
+	.single-item-text-wrap .single-item-desc {
+		font-size: $p-size;
+	}
+
+	.single-item-text-wrap .single-item-cart-control {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.single-item-text-wrap .single-item-qty-wrap {
+		margin: 0 0 2rem 0;
+		padding: 0.5rem 0;
+	}
+
+	// Image
+	.single-item-img-wrap .single-item-img {
+		width: 250px;
 	}
 }

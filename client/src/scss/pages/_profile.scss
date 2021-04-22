@@ -1,0 +1,54 @@
+// ====================== Profile Section ======================
+.profile-section-wrap {
+	margin: 4rem auto;
+	display: flex;
+}
+
+// ------- Filter Section -------
+.profile-filter-section {
+	flex: 1;
+	background-color: #f4f4f4;
+	border: 1px solid #ccc;
+
+	// Title
+	.profile-filter-title-wrap {
+		padding: 2rem 0;
+		text-align: center;
+		border-bottom: 1px solid #ccc;
+
+		.profile-filter-title {
+			font-size: $h2-size - 0.5rem;
+			font-weight: 400;
+			text-transform: capitalize;
+			color: $default-dark-color;
+		}
+	}
+
+	// Links
+	.profile-filter-link {
+		padding: 1rem 0;
+		border-bottom: 1px solid #ccc;
+		transition: all 0.2s ease-in-out;
+
+		&:hover {
+			background-color: rgb(80, 160, 250);
+			cursor: pointer;
+		}
+
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+
+	.profile-filter-link-text {
+		padding-left: 0.5rem;
+		font-size: $link-size + 0.25rem;
+		font-weight: 400;
+		text-transform: capitalize;
+		color: $default-dark-color;
+	}
+}
+
+.profile-showcase-wrap {
+	flex: 3;
+}

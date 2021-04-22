@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { CartContext } from "../context/CartContext";
-import logo_img from "../assets/img/mern-logo.jpg";
+import mernLogo from "../assets/img/mern-logo.jpg";
 
 const pages = [
 	{
@@ -37,7 +37,7 @@ const Navbar = () => {
 				<div className="nav-upper-inner">
 					<div className="nav-logo-wrap">
 						<img
-							src={logo_img}
+							src={mernLogo}
 							alt="Logo"
 							className="nav-logo-img"
 						/>

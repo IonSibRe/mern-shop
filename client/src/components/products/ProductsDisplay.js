@@ -9,7 +9,6 @@ const ProductsDisplay = ({ products }) => {
 		<div className="products-showcase-inner-wrap">
 			{products.map((product) => {
 				const { _id, title, price, img } = product;
-				console.log(cart);
 
 				let inCart;
 
