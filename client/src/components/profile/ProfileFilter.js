@@ -7,7 +7,7 @@ const links = [
 	{ id: uuidv4(), category: "orderHistory", text: "order history" },
 ];
 
-const ProfileFilter = () => {
+const ProfileFilter = ({ setCurrentPage }) => {
 	return (
 		<section className="profile-filter-section">
 			<div className="profile-filter-title-wrap">
@@ -15,10 +15,14 @@ const ProfileFilter = () => {
 			</div>
 			<div className="profile-filter-links-wrap">
 				{links.map((link) => {
-					const { id, text } = link;
+					const { id, category, text } = link;
 
 					return (
-						<div className="profile-filter-link" key={id}>
+						<div
+							className="profile-filter-link"
+							key={id}
+							onClick={() => setCurrentPage(category)}
+						>
 							<h4 className="profile-filter-link-text">{text}</h4>
 						</div>
 					);

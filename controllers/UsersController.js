@@ -132,4 +132,69 @@ const getUser = async (req, res, next) => {
 	}
 };
 
-module.exports = { userRegister, userLogin, getAllUsers, getUser };
+// @desc Update User data
+// @route PATCH /api/v1/user/:id
+const updateUser = async (req, res, next) => {
+	try {
+		const filter = { _id: req.params.id };
+		const update = { personalData: req.body };
+
+		const updatedUser = await User.findOneAndUpdate(filter, update, {
+			new: true,
+		});
+
+		return res.status(200).json({
+			success: true,
+			data: updatedUser,
+		});
+	} catch (err) {
+		return res.status(500).json({
+			success: false,
+			error: "Server Error",
+		});
+	}
+};
+
+// @desc Change Password
+// @route PATCH /api/v1/user/:id/password
+const changePassword = async (req, res, next) => {
+	try {
+		const filter = { _id: req.params.id };
+
+		const salt = await bcrypt.genSalt(10);
+		const password = await bcrypt.hash(req.body.password, salt);
+
+		const updatedUser = await User.findOneAndUpdate(
+			filter,
+			{ password },
+			{
+				new: true,
+			}
+		);
+
+		const newUser = {
+			_id: updatedUser._id,
+			username: updatedUser.username,
+			email: updatedUser.email,
+		};
+
+		return res.status(200).json({
+			success: true,
+			data: newUser,
+		});
+	} catch (err) {
+		return res.status(500).json({
+			success: false,
+			error: "Server Error",
+		});
+	}
+};
+
+module.exports = {
+	userRegister,
+	userLogin,
+	getAllUsers,
+	getUser,
+	updateUser,
+	changePassword,
+};

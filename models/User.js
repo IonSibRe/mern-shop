@@ -22,6 +22,11 @@ const UserSchema = new mongoose.Schema(
 			min: 4,
 		},
 
+		personalData: {
+			type: Object,
+			required: false,
+		},
+
 		date: {
 			type: Date,
 			default: Date.now,
