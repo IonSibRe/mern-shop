@@ -14,7 +14,7 @@ const items = [
 const ProfileInfo = () => {
 	const [personalData, setPersonalData] = useState({});
 	const [updatedSuccessfully, setUpdatedSuccessfully] = useState(false);
-	const [error, setError] = useState({ error: false, msg: "" });
+	const [error, setError] = useState({ error: false, msg: "error" });
 	const localLogin = JSON.parse(localStorage.getItem("login"));
 
 	const url = "http://localhost:5000/api/v1/user";
@@ -65,43 +65,38 @@ const ProfileInfo = () => {
 	return (
 		<>
 			{!localLogin && <Redirect to="/login" />}
-			<section className="profile-personal-info-section">
-				<div className="profile-personal-info-title-wrap">
-					<h2 className="profile-personal-info-title">
-						account information
-					</h2>
+			<section className="profile-section profile-personal-info-section">
+				<div className="profile-title-wrap">
+					<h2 className="profile-title">account information</h2>
 				</div>
 				{updatedSuccessfully && (
-					<div className="profile-personal-info-updated-wrap profile-personal-info-alert-wrap">
-						<h3 className="profile-personal-info-updated-text profile-personal-info-alert-text">
+					<div className="profile-updated-wrap profile-alert-wrap">
+						<h3 className="profile-updated-text profile-alert-text">
 							account updated successfully
 						</h3>
 					</div>
 				)}
 				{error.error && (
-					<div className="profile-personal-info-error-wrap profile-personal-info-alert-wrap">
-						<h3 className="profile-personal-info-error-text profile-personal-info-alert-text">
+					<div className="profile-error-wrap profile-alert-wrap">
+						<h3 className="profile-error-text profile-alert-text">
 							{error.msg}
 						</h3>
 					</div>
 				)}
-				<div className="profile-personal-info-items-wrap">
+				<div className="profile-items-wrap">
 					{items.map((item) => {
 						const { id, category, title } = item;
 						return (
-							<div
-								className="profile-personal-info-item"
-								key={id}
-							>
-								<div className="profile-personal-info-text-wrap">
-									<h3 className="profile-personal-info-text">
+							<div className="profile-item" key={id}>
+								<div className="profile-item-text-wrap">
+									<h3 className="profile-item-text">
 										{title}:
 									</h3>
 								</div>
-								<div className="profile-personal-info-input-wrap">
+								<div className="profile-item-input-wrap">
 									<input
 										type="text"
-										className="profile-personal-info-input"
+										className="profile-item-input"
 										onChange={(e) =>
 											setPersonalData({
 												...personalData,
@@ -114,11 +109,8 @@ const ProfileInfo = () => {
 						);
 					})}
 				</div>
-				<div className="profile-personal-info-submit-wrap">
-					<button
-						className="profile-personal-info-submit-btn"
-						onClick={updateUser}
-					>
+				<div className="profile-submit-wrap">
+					<button className="profile-submit-btn" onClick={updateUser}>
 						continue
 					</button>
 				</div>

@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, Redirect } from "react-router-dom";
+import Navbar from "../components/Navbar";
 import { AuthContext } from "../context/AuthContext";
 
 const Register = () => {
@@ -19,52 +20,62 @@ const Register = () => {
 			{loggedIn ? (
 				<Redirect to="/" />
 			) : (
-				<section className="auth-wrap section-center">
-					{error && (
-						<div className="alert-wrap">
-							<h2 className="alert-text">{error}</h2>
-						</div>
-					)}
-					<div className="auth-card">
-						<h1 className="auth-title">register</h1>
-						<div className="auth-card-inner-wrap">
-							<input
-								type="text"
-								placeholder="Username"
-								className="auth-input auth-username-input"
-								onChange={(e) => setUsername(e.target.value)}
-							/>
-							<input
-								type="email"
-								placeholder="Email"
-								className="auth-input auth-email-input"
-								onChange={(e) => setEmail(e.target.value)}
-							/>
-							<input
-								type="password"
-								placeholder="Password"
-								className="auth-input auth-password-input"
-								onChange={(e) => setPassword(e.target.value)}
-							/>
-							<div className="auth-switch-wrap">
-								<p className="auth-switch-text">
-									Already have an account?{" "}
-								</p>
-								<Link to="/login" className="auth-switch-link">
-									Log in
-								</Link>
+				<>
+					<Navbar />
+					<section className="auth-wrap section-center">
+						{error && (
+							<div className="alert-wrap">
+								<h2 className="alert-text">{error}</h2>
 							</div>
-							<button
-								className="auth-btn"
-								onClick={() =>
-									register(username, email, password)
-								}
-							>
-								register
-							</button>
+						)}
+						<div className="auth-card">
+							<h1 className="auth-title">register</h1>
+							<div className="auth-card-inner-wrap">
+								<input
+									type="text"
+									placeholder="Username"
+									className="auth-input auth-username-input"
+									onChange={(e) =>
+										setUsername(e.target.value)
+									}
+								/>
+								<input
+									type="email"
+									placeholder="Email"
+									className="auth-input auth-email-input"
+									onChange={(e) => setEmail(e.target.value)}
+								/>
+								<input
+									type="password"
+									placeholder="Password"
+									className="auth-input auth-password-input"
+									onChange={(e) =>
+										setPassword(e.target.value)
+									}
+								/>
+								<div className="auth-switch-wrap">
+									<p className="auth-switch-text">
+										Already have an account?{" "}
+									</p>
+									<Link
+										to="/login"
+										className="auth-switch-link"
+									>
+										Log in
+									</Link>
+								</div>
+								<button
+									className="auth-btn"
+									onClick={() =>
+										register(username, email, password)
+									}
+								>
+									register
+								</button>
+							</div>
 						</div>
-					</div>
-				</section>
+					</section>
+				</>
 			)}
 		</>
 	);

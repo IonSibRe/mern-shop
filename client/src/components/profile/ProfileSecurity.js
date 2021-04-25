@@ -61,54 +61,52 @@ const ProfileSecurity = () => {
 	return (
 		<>
 			{!localLogin && <Redirect to="/" />}
-			<section className="profile-personal-info-section">
-				<div className="profile-personal-info-title-wrap">
-					<h2 className="profile-personal-info-title">security</h2>
+			<section className="profile-section profile-security-section">
+				<div className="profile-title-wrap">
+					<h2 className="profile-title">security</h2>
 				</div>
 				{updatedSuccessfully && (
-					<div className="profile-personal-info-updated-wrap profile-personal-info-alert-wrap">
-						<h3 className="profile-personal-info-updated-text profile-personal-info-alert-text">
+					<div className="profile-updated-wrap profile-alert-wrap">
+						<h3 className="profile-updated-text profile-alert-text">
 							password changed successfully
 						</h3>
 					</div>
 				)}
 				{error.error && (
-					<div className="profile-personal-info-error-wrap profile-personal-info-alert-wrap">
-						<h3 className="profile-personal-info-error-text profile-personal-info-alert-text">
+					<div className="profile-error-wrap profile-alert-wrap">
+						<h3 className="profile-error-text profile-alert-text">
 							{error.msg}
 						</h3>
 					</div>
 				)}
-				<div className="profile-personal-info-items-wrap profile-security-items-wrap">
-					<div className="profile-security-items-wrap-title-wrap">
-						<h3 className="profile-security-items-wrap-title">
+				<div className="profile-items-wrap">
+					<div className="profile-security-items-title-wrap">
+						<h3 className="profile-security-items-title">
 							change password
 						</h3>
 					</div>
-					<div className="profile-personal-info-item">
-						<div className="profile-personal-info-text-wrap">
-							<h3 className="profile-personal-info-text">
-								password
-							</h3>
+					<div className="profile-item">
+						<div className="profile-item-text-wrap">
+							<h3 className="profile-item-text">password</h3>
 						</div>
-						<div className="profile-personal-info-input-wrap">
+						<div className="profile-item-input-wrap">
 							<input
 								type="password"
-								className="profile-personal-info-input"
+								className="profile-item-input"
 								onChange={(e) => setPassword(e.target.value)}
 							/>
 						</div>
 					</div>
-					<div className="profile-personal-info-item">
-						<div className="profile-personal-info-text-wrap">
-							<h3 className="profile-personal-info-text">
+					<div className="profile-item">
+						<div className="profile-item-text-wrap">
+							<h3 className="profile-item-text">
 								password confirm
 							</h3>
 						</div>
-						<div className="profile-personal-info-input-wrap">
+						<div className="profile-item-input-wrap">
 							<input
 								type="password"
-								className="profile-personal-info-input"
+								className="profile-item-input"
 								onChange={(e) =>
 									setPasswordConfirm(e.target.value)
 								}
@@ -116,9 +114,9 @@ const ProfileSecurity = () => {
 						</div>
 					</div>
 				</div>
-				<div className="profile-personal-info-submit-wrap">
+				<div className="profile-submit-wrap">
 					<button
-						className="profile-personal-info-submit-btn"
+						className="profile-submit-btn"
 						onClick={changePassword}
 					>
 						continue

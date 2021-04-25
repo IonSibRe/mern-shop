@@ -21,12 +21,24 @@ const CartShowcase = () => {
 					<h2 className="cart-heading-title">your cart items</h2>
 					<div className="cart-wrap">
 						<div className="cart-header-wrap">
-							<h3 className="cart-header-title">product</h3>
-							<h3 className="cart-header-title">product name</h3>
-							<h3 className="cart-header-title">price</h3>
-							<h3 className="cart-header-title">qty</h3>
-							<h3 className="cart-header-title">total</h3>
-							<h3 className="cart-header-title">remove</h3>
+							<h3 className="cart-header-title cart-header-product">
+								product
+							</h3>
+							<h3 className="cart-header-title cart-header-name">
+								name
+							</h3>
+							<h3 className="cart-header-title cart-header-price">
+								price
+							</h3>
+							<h3 className="cart-header-title cart-header-qty">
+								qty
+							</h3>
+							<h3 className="cart-header-title cart-header-total">
+								total
+							</h3>
+							<h3 className="cart-header-title cart-header-remove">
+								remove
+							</h3>
 						</div>
 
 						<div className="cart-items-wrap">

@@ -46,7 +46,7 @@
 	}
 
 	.profile-filter-link-text {
-		padding-left: 0.5rem;
+		padding-left: 1.5rem;
 		font-size: $link-size + 0.25rem;
 		font-weight: 400;
 		text-transform: capitalize;
@@ -55,29 +55,29 @@
 }
 
 // ------- Profile Info Section -------
-.profile-personal-info-section {
+.profile-section {
 	width: 95%;
 	margin: 0 auto;
 
 	// Title
-	.profile-personal-info-title-wrap {
+	.profile-title-wrap {
 		margin-bottom: 2rem;
 
-		.profile-personal-info-title {
+		.profile-title {
 			font-size: $h2-size + 0.5rem;
-			font-weight: 400;
+			font-weight: 700;
 			text-transform: capitalize;
 			color: $default-dark-color;
 		}
 	}
 
 	// Alert
-	.profile-personal-info-alert-wrap {
+	.profile-alert-wrap {
 		width: fit-content;
 		margin-bottom: 2.5rem;
 		padding: 1rem 2rem;
 
-		.profile-personal-info-alert-text {
+		.profile-alert-text {
 			font-size: $h3-size - 0.5rem;
 			font-weight: 400;
 			text-transform: capitalize;
@@ -85,16 +85,16 @@
 		}
 	}
 
-	.profile-personal-info-updated-wrap {
+	.profile-updated-wrap {
 		background-color: #8de7a2;
 	}
 
-	.profile-personal-info-error-wrap {
+	.profile-error-wrap {
 		background-color: #e45d6b;
 	}
 
 	// Items
-	.profile-personal-info-item {
+	.profile-item {
 		display: flex;
 		margin-bottom: 1.5rem;
 
@@ -102,24 +102,24 @@
 			margin-bottom: 2rem;
 		}
 
-		.profile-personal-info-text-wrap {
+		.profile-item-text-wrap {
 			flex: 2;
 		}
 
-		.profile-personal-info-text {
+		.profile-item-text {
 			font-size: $h3-size - 0.25rem;
 			font-weight: 400;
 			text-transform: capitalize;
 			color: $default-dark-color;
 		}
 
-		.profile-personal-info-input-wrap {
+		.profile-item-input-wrap {
 			flex: 6;
 			display: flex;
 			align-items: center;
 		}
 
-		.profile-personal-info-input {
+		.profile-item-input {
 			width: 100%;
 			padding: 0.25rem 0 0.25rem 0.5rem;
 			font-size: $link-size + 0.25rem;
@@ -129,80 +129,144 @@
 	}
 
 	// Submit Btn
-	.profile-personal-info-submit-wrap {
+	.profile-submit-wrap {
 		display: flex;
 		justify-content: flex-end;
 
-		.profile-personal-info-submit-btn {
+		.profile-submit-btn {
 			@include btn-default;
 		}
 	}
 }
 
 // ------- Profile Security Section -------
-.profile-security-items-wrap-title {
+.profile-security-items-title {
 	margin-bottom: 2.5rem;
-	font-size: $h3-size + 0.25rem;
-	font-weight: 400;
+	font-size: $h3-size - 0.25rem;
+	font-weight: 600;
 	text-transform: capitalize;
 	color: $default-dark-color;
 }
 
 // ------- Profile Order Section -------
-.profile-order-section {
-	width: 95%;
-	margin: 0 auto;
+// Orders
+.profile-order-form-headers-wrap {
+	display: flex;
+	border-bottom: 1px solid #ccc;
+	margin-bottom: 1rem;
+	padding-bottom: 1rem;
 
-	// Title
-	.profile-order-title-wrap {
-		margin-bottom: 2rem;
+	.profile-order-form-headers-text {
+		flex: 1;
+		font-size: $h3-size - 0.5rem;
+		font-weight: 600;
+		text-transform: capitalize;
+		color: $default-dark-color;
+	}
+}
 
-		.profile-order-title {
-			font-size: $h2-size + 0.5rem;
-			font-weight: 400;
-			text-transform: capitalize;
-			color: $default-dark-color;
-		}
+.profile-order-form-item {
+	display: flex;
+	margin-bottom: 1rem;
+	padding-bottom: 1rem;
+	border-bottom: 1px solid #ccc;
+
+	&:last-child {
+		margin-bottom: 0;
+		padding-bottom: 0;
+		border-bottom: none;
 	}
 
-	// Orders
-	.profile-order-form-headers-wrap {
-		display: flex;
-		border-bottom: 1px solid #ccc;
-		margin-bottom: 1rem;
-		padding-bottom: 1rem;
-
-		.profile-order-form-headers-text {
-			flex: 1;
-			font-size: $h3-size - 0.5rem;
-			font-weight: 600;
-			text-transform: capitalize;
-			color: $default-dark-color;
-		}
+	.profile-order-form-item-text {
+		flex: 1;
+		font-size: $h4-size - 0.25rem;
+		font-weight: 400;
+		text-transform: capitalize;
+		color: $default-dark-color;
 	}
 
-	.profile-order-form-item {
-		display: flex;
+	.profile-order-form-item-link {
+		color: $default-light-blue-color;
+	}
+}
+
+// ====================== Media Queries ======================
+
+@media screen and (max-width: 1300px) {
+	.profile-section-wrap {
+		width: 95%;
+	}
+
+	// ------- Profile Filter Section -------
+	.profile-filter-section {
+		flex: 1.25;
+	}
+
+	// ------- Profile Info Section -------
+	.profile-section .profile-item .profile-item-input-wrap {
+		flex: 4;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.profile-section-wrap {
+		flex-direction: column;
+	}
+
+	// ------- Profile Filter Section -------
+	.profile-filter-section {
+		flex: 1;
+		min-height: 60vh;
+		width: 425px;
+		margin: 0 auto 2rem auto;
+	}
+
+	.profile-filter-links-wrap {
+		text-align: center;
+	}
+
+	.profile-filter-section .profile-filter-link-text {
+		padding-left: 0;
+	}
+
+	// ------- Profile Info Section -------
+	.profile-section .profile-title-wrap {
+		text-align: center;
+	}
+
+	.profile-item {
+		flex-direction: column;
+	}
+
+	.profile-item .profile-item-text-wrap {
+		flex: 1;
 		margin-bottom: 1rem;
-		padding-bottom: 1rem;
-		border-bottom: 1px solid #ccc;
+	}
 
-		&:last-child {
-			margin-bottom: 0;
-			padding-bottom: 0;
-			border-bottom: none;
-		}
+	.profile-item .profile-item-input-wrap {
+		flex: 1;
+	}
 
-		.profile-order-form-item-text {
-			flex: 1;
-			font-size: $h4-size - 0.25rem;
-			font-weight: 400;
-			text-transform: capitalize;
-			color: $default-dark-color;
-		}
+	.profile-section .profile-title-wrap .profile-title {
+		font-size: $h2-size;
+	}
 
-		.profile-order-form-item-link {
-			color: $default-light-blue-color;
-		}
+	.profile-section .profile-item .profile-item-text {
+		font-size: $h3-size - 0.5rem;
+	}
+
+	.profile-section .profile-item .profile-item-input {
+		font-size: $link-size;
+	}
+
+	.profile-section .profile-submit-wrap {
+		justify-content: center;
+	}
+}
+
+@media screen and (max-width: 425px) {
+	// ------- Profile Filter Section -------
+	.profile-filter-section {
+		width: 100%;
 	}
 }

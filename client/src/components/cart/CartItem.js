@@ -6,17 +6,17 @@ const CartItem = ({ item }) => {
 	const { id, title, price, amount, total, img } = item;
 	return (
 		<div className="cart-item">
-			<div className="cart-item-inner-wrap">
+			<div className="cart-item-inner-wrap cart-item-img-wrap">
 				<img src={img} alt={title} className="cart-item-img" />
 			</div>
 			<div className="cart-item-inner-wrap">
 				<h4 className="cart-item-desc cart-item-title">{title}</h4>
 			</div>
-			<div className="cart-item-inner-wrap">
+			<div className="cart-item-inner-wrap cart-item-price-wrap">
 				<h4 className="cart-item-desc cart-item-price">${price}</h4>
 			</div>
-			<div className="cart-item-inner-wrap">
-				<div className="cart-qty-wrap">
+			<div className="cart-item-inner-wrap cart-item-qty-wrap">
+				<div className="cart-qty-inner-wrap">
 					<span
 						className="cart-qty-sign"
 						onClick={() => toggleAmount(id, "dec")}

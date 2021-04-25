@@ -9,6 +9,25 @@ import Newsletter from "../components/Newsletter";
 
 const Profile = () => {
 	const [currentPage, setCurrentPage] = useState("accountInfo");
+	let displayPage;
+
+	switch (currentPage) {
+		case "accountInfo":
+			displayPage = <ProfileInfo />;
+			break;
+
+		case "security":
+			displayPage = <ProfileSecurity />;
+			break;
+
+		case "orderHistory":
+			displayPage = <ProfileOrder />;
+			break;
+
+		default:
+			displayPage = <ProfileInfo />;
+			break;
+	}
 
 	return (
 		<>
@@ -16,9 +35,7 @@ const Profile = () => {
 			<section className="profile-section-wrap section-center">
 				<ProfileFilter setCurrentPage={setCurrentPage} />
 				<section className="profile-showcase-wrap">
-					{currentPage === "accountInfo" && <ProfileInfo />}
-					{currentPage === "security" && <ProfileSecurity />}
-					{currentPage === "orderHistory" && <ProfileOrder />}
+					{displayPage}
 				</section>
 			</section>
 			<Newsletter />

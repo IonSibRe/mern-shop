@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const ProfileOrder = () => {
 	return (
-		<section className="profile-order-section">
-			<div className="profile-order-title-wrap">
-				<h2 className="profile-order-title">order history</h2>
+		<section className="profile-section profile-order-section">
+			<div className="profile-title-wrap">
+				<h2 className="profile-title">order history</h2>
 			</div>
 			<div className="profile-order-form-wrap">
 				<div className="profile-order-form-headers-wrap">

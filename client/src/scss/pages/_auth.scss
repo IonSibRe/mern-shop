@@ -1,10 +1,6 @@
 // ====================== Auth Section ======================
-
 .auth-wrap {
-	margin-top: 25vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+	margin: 10vh auto;
 }
 
 .alert-wrap {
@@ -20,6 +16,7 @@
 
 .auth-card {
 	width: 600px;
+	margin: 0 auto;
 	padding: 4rem 0 6rem 0;
 	background-color: #f4f4f4;
 	box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.25);
@@ -69,5 +66,22 @@
 			@include btn-default;
 			display: block;
 		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.auth-card {
+		width: 95%;
+	}
+}
+
+@media screen and (max-width: 425px) {
+	.auth-card .auth-title {
+		font-size: $h1-size - 3rem;
+	}
+
+	.auth-card .auth-card-inner-wrap .auth-input {
+		padding: 0.75rem 0 0.75rem 1rem;
+		font-size: $link-size;
 	}
 }
