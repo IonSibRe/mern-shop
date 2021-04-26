@@ -9,14 +9,20 @@ import { productImage } from "../sample_data/home_images";
 
 const SingleItem = () => {
 	const { id } = useParams();
-	const { addToCartSingleItem } = useContext(CartContext);
+	const { addToCartSingleItem, cart } = useContext(CartContext);
 
 	const [currentProduct, setCurrentProduct] = useState({});
 
-	const { title, manufacturer, price } = currentProduct;
+	const { _id, title, manufacturer, price } = currentProduct;
 
 	const [currentItemAmount, setCurrentItemAmount] = useState(1);
 	const [currentItemTotal, setCurrentItemTotal] = useState(0);
+
+	let inCart;
+
+	cart.forEach((item) => {
+		if (item.id === _id) inCart = true;
+	});
 
 	const updateItem = (type) => {
 		const newPrice = parseFloat(price);
@@ -98,7 +104,10 @@ const SingleItem = () => {
 							</div>
 							<div className="single-item-add-btn-wrap">
 								<button
-									className="single-item-add-btn"
+									className={`single-item-add-btn ${
+										inCart && "btn-disabled"
+									}`}
+									disabled={inCart}
 									onClick={() =>
 										addToCartSingleItem(
 											id,
@@ -110,7 +119,7 @@ const SingleItem = () => {
 										)
 									}
 								>
-									add to cart
+									{inCart ? "in cart" : "add to cart"}
 								</button>
 							</div>
 						</div>

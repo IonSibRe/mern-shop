@@ -7,7 +7,6 @@ import Cart from "./Cart";
 import Login from "./Login";
 import Register from "./Register";
 import Profile from "./Profile";
-import Checkout from "./Checkout";
 import Error from "./Error";
 
 export {
@@ -20,6 +19,5 @@ export {
 	Login,
 	Register,
 	Profile,
-	Checkout,
 	Error,
 };

@@ -1,0 +1,172 @@
+// ======================  Checkout Section ======================
+
+// ------- Global Checkout -------
+.checkout-form {
+	width: 700px;
+	margin: 7rem auto;
+
+	.checkout-title-wrap {
+		margin-bottom: 1.5rem;
+
+		.checkout-title {
+			font-size: $h2-size;
+			font-weight: 400;
+			text-transform: capitalize;
+			color: $default-dark-color;
+		}
+	}
+}
+
+// ------- Checkout Steps -------
+.checkout-steps-wrap {
+	display: flex;
+	margin: 2rem 0;
+
+	.checkout-steps-item {
+		flex: 1;
+		padding: 1rem;
+		border-bottom: 2px solid #ccc;
+		color: #ccc;
+	}
+
+	.checkout-steps-item.active {
+		border-bottom-color: #6efa96;
+		color: #6efa96;
+	}
+
+	.checkout-steps-text {
+		font-size: $h3-size;
+		font-weight: 400;
+		text-transform: capitalize;
+	}
+}
+
+.checkout-submit-wrap {
+	margin-top: 2rem;
+
+	.checkout-submit-btn {
+		@include btn-default;
+	}
+}
+
+// ------- Shipping Address -------
+.sa-item {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 1rem;
+
+	.sa-item-label {
+		margin-bottom: 0.5rem;
+		font-size: $link-size + 0.5rem;
+		text-transform: capitalize;
+		color: $default-dark-color;
+	}
+
+	.sa-item-input {
+		padding: 0.5rem 0 0.5rem 1rem;
+		font-size: $link-size;
+		border: 1px solid #ccc;
+		outline: none;
+
+		&::placeholder {
+			text-transform: capitalize;
+		}
+	}
+}
+
+// ------- Payment -------
+.payment-method-item {
+	display: flex;
+	align-items: center;
+	margin-bottom: 0.5rem;
+
+	.payment-method-input {
+		margin-right: 1rem;
+	}
+
+	.payment-method-label {
+		font-size: $link-size;
+	}
+}
+
+// ------- Place Order -------
+.place-order-section {
+	display: flex;
+}
+
+.place-order-info-wrap {
+	flex: 3;
+}
+
+.place-order-card {
+	margin-bottom: 2rem;
+	padding: 1rem;
+	background-color: #f4f4f4;
+	border: 1px solid #ccc;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
+.place-order-card-title {
+	margin-bottom: 0.5rem;
+	font-size: $h2-size;
+	font-weight: 400;
+	text-transform: capitalize;
+	color: $default-dark-color;
+}
+
+.place-order-card-text {
+	font-size: $p-size;
+}
+
+.place-order-items-card {
+	background-color: #fff;
+
+	.place-order-cart-item {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.place-order-cart-item-img {
+		width: 150px;
+	}
+
+	.place-order-cart-item-text {
+		font-size: $h4-size;
+		font-weight: 400;
+		color: $default-dark-color;
+	}
+
+	.place-order-cart-item-price-text {
+		margin-right: 2rem;
+	}
+}
+
+.place-order-summary-wrap {
+	flex: 1.5;
+
+	.place-order-summary-card {
+		margin: 0 2rem;
+	}
+
+	.place-order-summary-card-item {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 0.5rem;
+	}
+
+	.place-order-summary-text {
+		font-size: $h4-size;
+		font-weight: 400;
+		text-transform: capitalize;
+		color: $default-dark-color;
+	}
+
+	.place-order-summary-submit-btn {
+		@include btn-default;
+		margin-top: 1rem;
+	}
+}

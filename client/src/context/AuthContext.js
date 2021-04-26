@@ -45,6 +45,7 @@ const AuthProvider = ({ children }) => {
 
 	const logout = () => {
 		localStorage.removeItem("login");
+		localStorage.removeItem("shippingAddress");
 		dispatch({ type: "LOGOUT" });
 	};
 
