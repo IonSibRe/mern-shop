@@ -5,6 +5,7 @@ const path = require("path");
 const cors = require("cors");
 const products = require("./routes/products");
 const auth = require("./routes/auth");
+const orders = require("./routes/orders");
 const reviews = require("./routes/reviews");
 const connectToDatabase = require("./config/db");
 
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use(cors());
 app.use("/api/v1/products", products);
 app.use("/api/v1/user", auth);
+app.use("/api/v1/orders", orders);
 app.use("/api/v1/reviews", reviews);
 
 // Development

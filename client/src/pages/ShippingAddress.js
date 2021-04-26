@@ -31,7 +31,7 @@ const ShippingAddress = () => {
 				<form
 					action=""
 					className="checkout-form"
-					onSubmit={(e) => submitHandler(e)}
+					onSubmit={submitHandler}
 				>
 					<div className="checkout-title-wrap">
 						<h2 className="checkout-title">shipping address</h2>

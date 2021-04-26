@@ -12,6 +12,36 @@ const CheckoutReducer = (state, action) => {
 				paymentMethod: action.payload,
 			};
 
+		case "ORDER_CREATE_REQUEST":
+			return {
+				...state,
+				loading: true,
+			};
+
+		case "ORDER_CREATE_SUCCESS":
+			return {
+				...state,
+				loading: false,
+				success: true,
+				order: action.payload,
+			};
+
+		case "ORDER_CREATE_ERROR":
+			return {
+				...state,
+				loading: false,
+				error: action.payload,
+			};
+
+		case "ORDER_CREATE_RESET":
+			return {
+				...state,
+				order: [],
+				loading: false,
+				success: false,
+				error: "",
+			};
+
 		default:
 			throw new Error("No method matched the dispatch");
 	}

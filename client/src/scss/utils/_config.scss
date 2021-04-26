@@ -29,6 +29,7 @@ $default-dark-color: #333;
 $default-light-color: #fff;
 $default-product-desc-color: #828282;
 $default-light-blue-color: #266cfb;
+$default-light-blue-color-transparent: #266dfb83;
 
 // ============= Mixins =============
 @mixin section-center {
@@ -80,6 +81,7 @@ $default-light-blue-color: #266cfb;
 
 .btn-disabled {
 	pointer-events: none;
+	background-color: $default-light-blue-color-transparent !important;
 }
 
 // ============= Default Resets =============

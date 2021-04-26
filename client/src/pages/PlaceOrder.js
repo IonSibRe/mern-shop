@@ -1,33 +1,59 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import CheckoutSteps from "../components/checkout/CheckoutSteps";
 import Navbar from "../components/Navbar";
+import { AuthContext } from "../context/AuthContext";
 import { CartContext } from "../context/CartContext";
 import { CheckoutContext } from "../context/CheckoutContext";
 
 const PlaceOrder = () => {
-	const { shippingAddress, paymentMethod } = useContext(CheckoutContext);
-	const { cart } = useContext(CartContext);
+	const {
+		shippingAddress,
+		paymentMethod,
+		createOrder,
+		resetOrder,
+		loading,
+		success,
+		error,
+		order,
+	} = useContext(CheckoutContext);
 	const history = useHistory();
+	const { user } = useContext(AuthContext);
+	const { cart } = useContext(CartContext);
 
 	if (!paymentMethod) history.push("/payment");
 
+	// Prices
 	cart.itemsPrice = cart.reduce(
 		(acc, currentItem) => acc + currentItem.amount * currentItem.price,
 		0
 	);
-
 	cart.shippingPrice = cart.itemsPrice > 100 ? 0 : 10;
 	cart.taxPrice = 0.15 * cart.itemsPrice;
 	cart.totalPrice = cart.itemsPrice + cart.shippingPrice + cart.taxPrice;
 
-	console.log(cart.itemsPrice);
-
-	const placeOrderHandler = () => {
-		return;
+	const reqItems = {
+		orderItems: cart.map((item) => item),
+		shippingAddress,
+		paymentMethod,
+		itemsPrice: cart.itemsPrice,
+		shippingPrice: cart.shippingPrice,
+		taxPrice: cart.taxPrice,
+		totalPrice: cart.totalPrice,
+		user_id: user._id,
 	};
 
-	console.log(cart);
+	const placeOrderHandler = () => {
+		createOrder(reqItems);
+	};
+
+	useEffect(() => {
+		if (success) {
+			history.push(`/placeorder/${order._id}`);
+			resetOrder();
+		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [history, order, success]);
 
 	return (
 		<>
@@ -116,7 +142,14 @@ const PlaceOrder = () => {
 								${cart.totalPrice.toFixed(2)}
 							</h4>
 						</div>
-						<button className="place-order-summary-submit-btn">
+						<button
+							className={`place-order-summary-submit-btn ${
+								reqItems.orderItems.length === 0 &&
+								"btn-disabled"
+							}`}
+							onClick={placeOrderHandler}
+							disabled={reqItems.orderItems.length === 0}
+						>
 							place order
 						</button>
 					</div>
