@@ -1,0 +1,35 @@
+// ====================== Alert ======================
+
+.alert-text {
+	margin-top: 1rem;
+	padding: 0.5rem 0 0.5rem 1rem;
+	font-size: $p-size;
+	font-weight: 400;
+	text-transform: capitalize;
+	color: $default-dark-color;
+}
+
+.alert-success {
+	background-color: #8de7a2;
+}
+
+.alert-error {
+	background-color: #e45d6b;
+}
+
+// ====================== Loader ======================
+.loader-wrap {
+	margin: 4rem auto;
+	text-align: center;
+
+	.loader-img {
+		width: 250px;
+	}
+}
+
+@media screen and (max-width: 425px) {
+	// ------- Alert -------
+	.alert-wrap {
+		width: 100%;
+	}
+}

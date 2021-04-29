@@ -21,6 +21,9 @@ app.use(cors());
 app.use("/api/v1/products", products);
 app.use("/api/v1/user", auth);
 app.use("/api/v1/orders", orders);
+app.get("/api/v1/config/paypal", (req, res) => {
+	res.json({ success: true, clientID: process.env.PAYPAL_CLIENT_ID || "sb" });
+});
 app.use("/api/v1/reviews", reviews);
 
 // Development

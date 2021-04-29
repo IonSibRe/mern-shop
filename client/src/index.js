@@ -4,13 +4,16 @@ import App from "./App";
 import { CartProvider } from "./context/CartContext";
 import { ProductsProvider } from "./context/ProductsContext";
 import { AuthProvider } from "./context/AuthContext";
+import { CheckoutProvider } from "./context/CheckoutContext";
 
 ReactDOM.render(
 	<React.StrictMode>
 		<CartProvider>
 			<ProductsProvider>
 				<AuthProvider>
-					<App />
+					<CheckoutProvider>
+						<App />
+					</CheckoutProvider>
 				</AuthProvider>
 			</ProductsProvider>
 		</CartProvider>

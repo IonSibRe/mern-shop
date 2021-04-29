@@ -9,15 +9,18 @@ const ShippingAddress = () => {
 		CheckoutContext
 	);
 	const history = useHistory();
-	const [fullName, setFullName] = useState(shippingAddress.fullName);
-	const [address, setAddress] = useState(shippingAddress.address);
-	const [city, setCity] = useState(shippingAddress.city);
-	const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
-	const [country, setCountry] = useState(shippingAddress.country);
+	const [fullName, setFullName] = useState(shippingAddress.fullName || "");
+	const [address, setAddress] = useState(shippingAddress.address || "");
+	const [city, setCity] = useState(shippingAddress.city || "");
+	const [postalCode, setPostalCode] = useState(
+		shippingAddress.postalCode || ""
+	);
+	const [country, setCountry] = useState(shippingAddress.country || "");
 	const localLogin = JSON.parse(localStorage.getItem("login"));
 
 	const submitHandler = (e) => {
 		e.preventDefault();
+
 		saveShippingAddress({ fullName, address, city, postalCode, country });
 		history.push("/payment");
 	};

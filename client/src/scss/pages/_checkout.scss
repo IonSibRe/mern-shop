@@ -2,7 +2,7 @@
 
 // ------- Global Checkout -------
 .checkout-form {
-	width: 700px;
+	width: 768px;
 	margin: 7rem auto;
 
 	.checkout-title-wrap {
@@ -75,6 +75,12 @@
 }
 
 // ------- Payment -------
+.payment-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 .payment-method-item {
 	display: flex;
 	align-items: center;
@@ -92,10 +98,12 @@
 // ------- Place Order -------
 .place-order-section {
 	display: flex;
+	margin: 4rem auto;
 }
 
 .place-order-info-wrap {
 	flex: 3;
+	margin-left: 2rem;
 }
 
 .place-order-card {
@@ -119,6 +127,25 @@
 
 .place-order-card-text {
 	font-size: $p-size;
+}
+
+.place-order-card-alert-wrap {
+	margin-top: 1rem;
+	padding: 0.75rem 1rem;
+	border-radius: 5px;
+
+	.place-order-card-alert-text {
+		font-size: $p-size;
+		text-transform: capitalize;
+	}
+}
+
+.place-order-card-alert-true {
+	background-color: #8de7a2;
+}
+
+.place-order-card-alert-false {
+	background-color: #e45d6b;
 }
 
 .place-order-items-card {
@@ -145,6 +172,7 @@
 	}
 }
 
+// Summary
 .place-order-summary-wrap {
 	flex: 1.5;
 
@@ -168,5 +196,53 @@
 	.place-order-summary-submit-btn {
 		@include btn-default;
 		margin-top: 1rem;
+	}
+}
+
+@media screen and (max-width: 1300px) {
+	// ------- Place Order -------
+	.place-order-summary-wrap {
+		flex: 2;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	// ------- Global Checkout -------
+	.checkout-form {
+		width: 100%;
+	}
+
+	// ------- Checkout Steps -------
+	.checkout-steps-wrap .checkout-steps-text {
+		font-size: $h3-size - 1rem;
+	}
+
+	// ------- Place Order -------
+	.place-order-section {
+		flex-direction: column;
+	}
+
+	.place-order-info-wrap {
+		margin: 0 2rem 2rem 2rem;
+	}
+}
+
+@media screen and (max-width: 450px) {
+	// ------- Checkout Steps -------
+	.checkout-steps-wrap {
+		display: none;
+	}
+
+	// ------- Place Order -------
+	.place-order-info-wrap {
+		margin: 0 1rem 2rem 1rem;
+	}
+
+	.place-order-summary-wrap .place-order-summary-card {
+		margin: 0 1rem;
+	}
+
+	.place-order-cart-item-img-wrap {
+		display: none;
 	}
 }

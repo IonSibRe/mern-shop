@@ -48,7 +48,13 @@ const CartShowcase = () => {
 						</div>
 					</div>
 					<div className="cart-btns-wrap">
-						<button className="cart-clear-btn" onClick={clearCart}>
+						<Link
+							to="/shipping"
+							className="cart-btn cart-order-btn"
+						>
+							place order
+						</Link>
+						<button className="cart-btn" onClick={clearCart}>
 							clear cart
 						</button>
 					</div>

@@ -90,9 +90,13 @@
 	display: flex;
 	justify-content: flex-end;
 
-	.cart-clear-btn {
+	.cart-btn {
 		@include btn-default;
 		padding: 1.25rem 7rem;
+	}
+
+	.cart-order-btn {
+		margin-right: 4rem;
 	}
 }
 
@@ -141,6 +145,17 @@
 
 	.cart-item .cart-item-qty-wrap {
 		display: none;
+	}
+
+	.cart-btns-wrap {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.cart-btns-wrap .cart-order-btn {
+		margin-right: 0;
+		margin-bottom: 2rem;
 	}
 }
 

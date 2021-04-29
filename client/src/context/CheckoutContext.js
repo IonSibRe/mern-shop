@@ -1,5 +1,6 @@
-import React, { useReducer } from "react";
+import React, { useContext, useReducer } from "react";
 import CheckoutReducer from "../reducers/CheckoutReducer";
+import { CartContext } from "./CartContext";
 
 const CheckoutContext = React.createContext();
 
@@ -8,38 +9,43 @@ const initialState = {
 		? JSON.parse(localStorage.getItem("shippingAddress"))
 		: {},
 	paymentMethod: "PayPal",
-	order: [],
-	loading: false,
+	order: {},
+	allOrders: [],
 	success: false,
+	successPay: false,
+	loading: true,
+	errorPay: false,
 	error: "",
 };
 
 const CheckoutProvider = ({ children }) => {
+	const { clearCart } = useContext(CartContext);
 	const [state, dispatch] = useReducer(CheckoutReducer, initialState);
 
 	const url = "http://localhost:5000/api/v1/orders";
 
+	// Shipping Address
 	const saveShippingAddress = (data) => {
 		dispatch({ type: "CART_SAVE_SHIPPING_ADDRESS", payload: data });
 		localStorage.setItem("shippingAddress", JSON.stringify(data));
 	};
 
+	// Payment Method
 	const savePaymentMethod = (data) => {
 		dispatch({ type: "CART_SAVE_PAYMENT_METHOD", payload: data });
 	};
 
+	// Create Order
 	const createOrder = async (order) => {
-		dispatch({ type: "ORDER_CREATE_REQUEST", payload: order });
+		dispatch({ type: "ORDER_CREATE_REQUEST" });
 
 		try {
 			const localLogin = JSON.parse(localStorage.getItem("login"));
 
 			if (!localLogin) {
-				console.log("User isn't logged in");
+				console.error("User isn't logged in");
 				return;
 			}
-
-			console.log(JSON.stringify(order));
 
 			const res = await fetch(url, {
 				method: "POST",
@@ -52,9 +58,10 @@ const CheckoutProvider = ({ children }) => {
 
 			const data = await res.json();
 
-			console.log(data);
-
 			dispatch({ type: "ORDER_CREATE_SUCCESS", payload: data.order });
+
+			// Clear cart from state and local storage
+			clearCart();
 			localStorage.removeItem("cart");
 		} catch (err) {
 			dispatch({
@@ -67,8 +74,101 @@ const CheckoutProvider = ({ children }) => {
 		}
 	};
 
+	// Get Order Details
+	const getOrderDetails = async (id) => {
+		dispatch({ type: "ORDER_DETAILS_REQUEST" });
+
+		try {
+			const localLogin = JSON.parse(localStorage.getItem("login"));
+
+			const res = await fetch(`${url}/${id}`, {
+				headers: {
+					"auth-token": localLogin.token,
+				},
+			});
+
+			const data = await res.json();
+
+			dispatch({ type: "ORDER_DETAILS_SUCCESS", payload: data.order });
+		} catch (err) {
+			const msg =
+				err.response && err.response.data.message
+					? err.response.data.message
+					: err.message;
+			dispatch({ type: "ORDER_DETAILS_ERROR", payload: msg });
+		}
+	};
+
+	// Pay Order
+	const payOrder = async (order, paymentResult) => {
+		dispatch({ type: "ORDER_PAY_REQUEST" });
+
+		try {
+			const localLogin = JSON.parse(localStorage.getItem("login"));
+
+			const res = await fetch(`${url}/${order._id}/pay`, {
+				method: "PUT",
+				headers: {
+					"Content-Type": "application/json",
+					"auth-token": localLogin.token,
+				},
+				body: JSON.stringify(paymentResult),
+			});
+
+			const data = await res.json();
+
+			dispatch({ type: "ORDER_PAY_SUCCESS", payload: data });
+		} catch (err) {
+			const msg =
+				err.response && err.response.data.message
+					? err.response.data.message
+					: err.message;
+			dispatch({ type: "ORDER_PAY_ERROR", payload: msg });
+		}
+	};
+
+	const getAllOrders = async () => {
+		dispatch({ type: "ORDER_GET_ALL_REQUEST" });
+
+		try {
+			const localLogin = JSON.parse(localStorage.getItem("login"));
+
+			const res = await fetch(`${url}/all`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					"auth-token": localLogin.token,
+				},
+				body: JSON.stringify({ user_id: localLogin._id }),
+			});
+
+			const data = await res.json();
+
+			dispatch({
+				type: "ORDER_GET_ALL_SUCCESS",
+				payload: data.allOrders,
+			});
+		} catch (err) {
+			const msg =
+				err.response && err.response.data.message
+					? err.response.data.message
+					: err.message;
+			dispatch({ type: "ORDER_GET_ALL_ERROR", payload: msg });
+		}
+	};
+
+	const setLoading = () => {
+		dispatch({ type: "SET_LOADING" });
+	};
+
+	// Reset Order
 	const resetOrder = () => {
 		dispatch({ type: "ORDER_CREATE_RESET" });
+	};
+
+	// Reset Order Pay
+	const resetOrderPay = () => {
+		dispatch({ type: "ORDER_PAY_RESET" });
 	};
 
 	return (
@@ -78,6 +178,11 @@ const CheckoutProvider = ({ children }) => {
 				saveShippingAddress,
 				savePaymentMethod,
 				createOrder,
+				setLoading,
+				getAllOrders,
+				getOrderDetails,
+				payOrder,
+				resetOrderPay,
 				resetOrder,
 			}}
 		>

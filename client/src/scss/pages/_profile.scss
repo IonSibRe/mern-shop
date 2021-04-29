@@ -149,43 +149,31 @@
 }
 
 // ------- Profile Order Section -------
-// Orders
-.profile-order-form-headers-wrap {
-	display: flex;
-	border-bottom: 1px solid #ccc;
-	margin-bottom: 1rem;
-	padding-bottom: 1rem;
+.profile-order-table {
+	width: 100%;
+	border-collapse: collapse;
 
-	.profile-order-form-headers-text {
-		flex: 1;
-		font-size: $h3-size - 0.5rem;
-		font-weight: 600;
-		text-transform: capitalize;
-		color: $default-dark-color;
-	}
-}
-
-.profile-order-form-item {
-	display: flex;
-	margin-bottom: 1rem;
-	padding-bottom: 1rem;
-	border-bottom: 1px solid #ccc;
-
-	&:last-child {
-		margin-bottom: 0;
-		padding-bottom: 0;
-		border-bottom: none;
+	.profile-order-tbody-tr:nth-child(even) {
+		background-color: #f4f4f4;
 	}
 
-	.profile-order-form-item-text {
-		flex: 1;
-		font-size: $h4-size - 0.25rem;
+	.profile-order-thead-th {
+		padding: 0.5rem 0 0.5rem 0.5rem;
+		text-align: left;
+		font-size: $p-size + 0.5rem;
 		font-weight: 400;
 		text-transform: capitalize;
-		color: $default-dark-color;
+		border: 1px solid #ccc;
 	}
 
-	.profile-order-form-item-link {
+	.profile-order-tbody-td {
+		padding: 0.5rem 0 0.5rem 0.5rem;
+		font-size: $p-size;
+		text-transform: capitalize;
+		border: 1px solid #ccc;
+	}
+
+	.profile-order-tbody-link {
 		color: $default-light-blue-color;
 	}
 }

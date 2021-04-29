@@ -24,8 +24,8 @@ const Register = () => {
 					<Navbar />
 					<section className="auth-wrap section-center">
 						{error && (
-							<div className="alert-wrap">
-								<h2 className="alert-text">{error}</h2>
+							<div className="auth-alert-wrap">
+								<h2 className="auth-alert-text">{error}</h2>
 							</div>
 						)}
 						<div className="auth-card">

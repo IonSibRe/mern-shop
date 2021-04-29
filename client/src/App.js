@@ -13,11 +13,11 @@ import {
 	Error,
 } from "./pages";
 import { HomeSlidersProvider } from "./context/HomeSlidersContext";
-import { CheckoutProvider } from "./context/CheckoutContext";
 import "./scss/main.scss";
 import ShippingAddress from "./pages/ShippingAddress";
 import Payment from "./pages/Payment";
 import PlaceOrder from "./pages/PlaceOrder";
+import SingleOrder from "./pages/SingleOrder";
 
 const App = () => {
 	return (
@@ -52,17 +52,18 @@ const App = () => {
 				<Route path="/profile">
 					<Profile />
 				</Route>
-				<CheckoutProvider>
-					<Route path="/shipping">
-						<ShippingAddress />
-					</Route>
-					<Route path="/payment">
-						<Payment />
-					</Route>
-					<Route path="/placeorder">
-						<PlaceOrder />
-					</Route>
-				</CheckoutProvider>
+				<Route path="/shipping">
+					<ShippingAddress />
+				</Route>
+				<Route path="/payment">
+					<Payment />
+				</Route>
+				<Route exact path="/placeorder">
+					<PlaceOrder />
+				</Route>
+				<Route exact path="/placeorder/:id">
+					<SingleOrder />
+				</Route>
 				<Route path="*">
 					<Error />
 				</Route>
