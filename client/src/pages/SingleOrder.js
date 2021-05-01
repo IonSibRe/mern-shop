@@ -1,14 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { CheckoutContext } from "../context/CheckoutContext";
-import { PayPalButton } from "react-paypal-button-v2";
+import { PayPalButtons } from "@paypal/react-paypal-js";
 import Navbar from "../components/Navbar";
 import Loader from "../components/Loader";
 import AlertBox from "../components/AlertBox";
+import { usePayPalScriptReducer } from "@paypal/react-paypal-js";
 
 const SingleOrder = () => {
 	const { id } = useParams();
-	const [sdkReady, setSdkReady] = useState(false);
+	// const [sdkReady, setSdkReady] = useState(false);
 	const {
 		order,
 		getOrderDetails,
@@ -19,38 +20,49 @@ const SingleOrder = () => {
 		error,
 		errorPay,
 	} = useContext(CheckoutContext);
-	const url = "http://localhost:5000/api/v1/config/paypal";
+	const [{ isPending }] = usePayPalScriptReducer();
 
 	useEffect(() => {
-		const addPayPalScript = async () => {
-			const res = await fetch(url);
-			const data = await res.json();
-			const script = document.createElement("script");
-			script.type = "text/javascript";
-			script.src = `https://www.paypal.com/sdk/js?client-id=${data.clientID}`;
-			script.async = true;
-			script.onload = () => {
-				setSdkReady(true);
-			};
-			document.body.appendChild(script);
-		};
 		if (!order || !order._id || successPay) {
 			resetOrderPay();
 			getOrderDetails(id);
-		} else {
-			if (!order.isPaid) {
-				if (!window.paypal) {
-					addPayPalScript();
-				} else {
-					setSdkReady(true);
-				}
-			}
 		}
+
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [id, order, successPay]);
 
-	const successPaymentHandler = (paymentResult) => {
-		payOrder(order, paymentResult);
+	const createOrder = (data, actions) => {
+		try {
+			return actions.order
+				.create({
+					purchase_units: [
+						{
+							amount: {
+								currency_code: "USD",
+								value: order.totalPrice,
+							},
+						},
+					],
+				})
+				.then((orderID) => {
+					return orderID;
+				});
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
+	const successPaymentHandler = (data, actions) => {
+		return actions.order.capture().then((details) => {
+			const paymentResult = {
+				id: details.id,
+				status: details.status,
+				update_time: details.update_time,
+				email_address: details.payer.email_address,
+			};
+			payOrder(order, paymentResult);
+			console.log(details);
+		});
 	};
 
 	if (loading) return <Loader />;
@@ -167,7 +179,7 @@ const SingleOrder = () => {
 						</div>
 						{!order.isPaid && (
 							<div id="paypal-btn-wrap">
-								{!sdkReady ? (
+								{isPending ? (
 									<h2>Loading</h2>
 								) : (
 									<>
@@ -177,9 +189,10 @@ const SingleOrder = () => {
 												msg={errorPay}
 											/>
 										)}
-										<PayPalButton
-											amount={order.totalPrice}
-											onSuccess={successPaymentHandler}
+										<PayPalButtons
+											createOrder={createOrder}
+											onApprove={successPaymentHandler}
+											onError={(err) => console.log(err)}
 										/>
 									</>
 								)}

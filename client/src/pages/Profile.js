@@ -33,7 +33,10 @@ const Profile = () => {
 		<>
 			<Navbar />
 			<section className="profile-section-wrap section-center">
-				<ProfileFilter setCurrentPage={setCurrentPage} />
+				<ProfileFilter
+					currentPage={currentPage}
+					setCurrentPage={setCurrentPage}
+				/>
 				<section className="profile-showcase-wrap">
 					{displayPage}
 				</section>

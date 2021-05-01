@@ -7,7 +7,7 @@ const links = [
 	{ id: uuidv4(), category: "orderHistory", text: "order history" },
 ];
 
-const ProfileFilter = ({ setCurrentPage }) => {
+const ProfileFilter = ({ currentPage, setCurrentPage }) => {
 	return (
 		<section className="profile-filter-section">
 			<div className="profile-filter-title-wrap">
@@ -19,7 +19,10 @@ const ProfileFilter = ({ setCurrentPage }) => {
 
 					return (
 						<div
-							className="profile-filter-link"
+							className={`profile-filter-link ${
+								currentPage === category &&
+								"profile-filter-link-active"
+							}`}
 							key={id}
 							onClick={() => setCurrentPage(category)}
 						>

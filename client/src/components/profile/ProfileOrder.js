@@ -26,9 +26,6 @@ const ProfileOrder = () => {
 				<AlertBox success={false} msg={error} />
 			) : (
 				<section className="profile-section profile-order-section">
-					<div className="profile-title-wrap">
-						<h2 className="profile-title">order history</h2>
-					</div>
 					<table className="profile-order-table">
 						<thead className="profile-order-thead">
 							<tr className="profile-order-thead-tr">

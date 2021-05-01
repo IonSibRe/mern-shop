@@ -1,6 +1,6 @@
 // ====================== Profile Section ======================
 .profile-section-wrap {
-	margin: 4rem auto;
+	margin: 6rem auto;
 	display: flex;
 }
 
@@ -11,7 +11,7 @@
 // ------- Filter Section -------
 .profile-filter-section {
 	flex: 1;
-	min-height: 70vh;
+	height: 50vh;
 	background-color: #f4f4f4;
 	border: 1px solid #ccc;
 
@@ -43,6 +43,10 @@
 		&:last-child {
 			border-bottom: none;
 		}
+	}
+
+	.profile-filter-link-active {
+		background-color: rgb(80, 160, 250);
 	}
 
 	.profile-filter-link-text {
@@ -211,7 +215,7 @@
 	// ------- Profile Filter Section -------
 	.profile-filter-section {
 		flex: 1;
-		min-height: 60vh;
+		height: 100%;
 		width: 425px;
 		margin: 0 auto 2rem auto;
 	}
@@ -259,15 +263,6 @@
 	}
 
 	// ------- Profile Order Section -------
-	// .profile-order-thead-th-paid,
-	// .profile-order-thead-th-delivered,
-	// .profile-order-thead-th-date,
-	// .profile-order-tbody-td-paid,
-	// .profile-order-tbody-td-delivered,
-	// .profile-order-tbody-td-date {
-	// 	display: none;
-	// }
-
 	.profile-order-table,
 	.profile-order-thead,
 	.profile-order-tbody,
