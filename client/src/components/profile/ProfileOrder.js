@@ -33,12 +33,16 @@ const ProfileOrder = () => {
 						<thead className="profile-order-thead">
 							<tr className="profile-order-thead-tr">
 								<th className="profile-order-thead-th">ID</th>
-								<th className="profile-order-thead-th">date</th>
+								<th className="profile-order-thead-th profile-order-thead-th-date">
+									date
+								</th>
 								<th className="profile-order-thead-th">
 									total
 								</th>
-								<th className="profile-order-thead-th">paid</th>
-								<th className="profile-order-thead-th">
+								<th className="profile-order-thead-th profile-order-thead-th-paid">
+									paid
+								</th>
+								<th className="profile-order-thead-th profile-order-thead-th-delivered">
 									delivered
 								</th>
 								<th className="profile-order-thead-th">
@@ -66,13 +70,13 @@ const ProfileOrder = () => {
 										<td className="profile-order-tbody-td">
 											{id}
 										</td>
-										<td className="profile-order-tbody-td">
+										<td className="profile-order-tbody-td profile-order-tbody-td-date">
 											{createdAt.substring(0, 10)}
 										</td>
 										<td className="profile-order-tbody-td">
 											${totalPrice.toFixed(2)}
 										</td>
-										<td className="profile-order-tbody-td">
+										<td className="profile-order-tbody-td profile-order-tbody-td-paid">
 											{isPaid
 												? `paid at: ${paidAt.substring(
 														0,
@@ -80,7 +84,7 @@ const ProfileOrder = () => {
 												  )}`
 												: "no"}
 										</td>
-										<td className="profile-order-tbody-td">
+										<td className="profile-order-tbody-td profile-order-tbody-td-delivered">
 											{isDelivered
 												? `delivered at: ${deliveredAt.substring(
 														0,
