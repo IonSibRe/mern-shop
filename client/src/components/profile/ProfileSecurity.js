@@ -8,7 +8,7 @@ const ProfileSecurity = () => {
 	const [error, setError] = useState({ error: false, msg: "" });
 	const localLogin = JSON.parse(localStorage.getItem("login"));
 
-	const url = "http://localhost:5000/api/v1/user";
+	const url = "/api/v1/user";
 
 	const changePassword = async () => {
 		if (!password || !passwordConfirm) {

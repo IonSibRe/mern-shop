@@ -22,7 +22,7 @@ const CheckoutProvider = ({ children }) => {
 	const { clearCart } = useContext(CartContext);
 	const [state, dispatch] = useReducer(CheckoutReducer, initialState);
 
-	const url = "http://localhost:5000/api/v1/orders";
+	const url = "/api/v1/orders";
 
 	// Shipping Address
 	const saveShippingAddress = (data) => {

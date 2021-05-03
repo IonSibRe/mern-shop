@@ -12,7 +12,7 @@ const initialState = {
 const AuthProvider = ({ children }) => {
 	const [state, dispatch] = useReducer(AuthReducer, initialState);
 
-	const url = "http://localhost:5000/api/v1/user";
+	const url = "/api/v1/user";
 
 	const login = async (email, password) => {
 		try {
