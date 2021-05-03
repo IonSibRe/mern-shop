@@ -105,7 +105,7 @@ const SingleItem = () => {
 							<div className="single-item-add-btn-wrap">
 								<button
 									className={`single-item-add-btn ${
-										inCart && "btn-disabled"
+										inCart && "btn-disabled-bg"
 									}`}
 									disabled={inCart}
 									onClick={() =>

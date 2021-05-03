@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import FeaturedProductsItem from "../home/FeaturedProductsItem";
-import { HomeSlidersContext } from "../../context/HomeSlidersContext";
+import { SlidersContext } from "../../context/SlidersContext";
 
 const FeaturedProductsRow = ({ data, row, rowCount }) => {
-	const { filterRow } = useContext(HomeSlidersContext);
+	const { filterRow } = useContext(SlidersContext);
 	const displayData = filterRow(data, row, rowCount);
 	return (
 		<div className="fp-showcase-inner-wrap home-showcase-inner-wrap">

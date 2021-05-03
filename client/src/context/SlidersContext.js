@@ -1,8 +1,8 @@
 import React from "react";
 
-const HomeSlidersContext = React.createContext();
+const SlidersContext = React.createContext();
 
-const HomeSlidersProvider = ({ children }) => {
+const SlidersProvider = ({ children }) => {
 	// Data
 	const filterRow = (data, row, rowCount) => {
 		const maxOnRow = Math.ceil(data.length / rowCount);
@@ -15,14 +15,14 @@ const HomeSlidersProvider = ({ children }) => {
 	};
 
 	return (
-		<HomeSlidersContext.Provider
+		<SlidersContext.Provider
 			value={{
 				filterRow,
 			}}
 		>
 			{children}
-		</HomeSlidersContext.Provider>
+		</SlidersContext.Provider>
 	);
 };
 
-export { HomeSlidersContext, HomeSlidersProvider };
+export { SlidersContext, SlidersProvider };

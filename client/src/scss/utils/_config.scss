@@ -81,6 +81,10 @@ $default-light-blue-color-transparent: #266dfb83;
 
 .btn-disabled {
 	pointer-events: none;
+}
+
+.btn-disabled-bg {
+	pointer-events: none;
 	background-color: $default-light-blue-color-transparent !important;
 }
 

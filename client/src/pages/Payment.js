@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import { CheckoutContext } from "../context/CheckoutContext";
 import Navbar from "../components/Navbar";
 import CheckoutSteps from "../components/checkout/CheckoutSteps";
@@ -11,6 +11,7 @@ const Payment = () => {
 	if (!shippingAddress.address) history.push("/shipping");
 
 	const [paymentMethod, setPaymentMethod] = useState("PayPal");
+	const localLogin = JSON.parse(localStorage.getItem("login"));
 
 	const submitHandler = (e) => {
 		e.preventDefault();
@@ -21,6 +22,7 @@ const Payment = () => {
 
 	return (
 		<>
+			{!localLogin && <Redirect to="/login" />}
 			<Navbar />
 			<section className="checkout-section-wrap">
 				<CheckoutSteps stepOne stepTwo stepThree />

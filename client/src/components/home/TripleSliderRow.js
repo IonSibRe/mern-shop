@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { HomeSlidersContext } from "../../context/HomeSlidersContext";
+import { SlidersContext } from "../../context/SlidersContext";
 import TripleSliderItem from "./TripleSliderItem";
 
 const TripleSliderRow = ({ data, row, rowCount }) => {
-	const { filterRow } = useContext(HomeSlidersContext);
+	const { filterRow } = useContext(SlidersContext);
 	const displayData = filterRow(data, row, rowCount);
 	return (
 		<div className="ts-showcase-inner-wrap home-showcase-inner-wrap">

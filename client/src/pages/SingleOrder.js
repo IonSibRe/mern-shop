@@ -1,15 +1,13 @@
 import React, { useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory, Redirect } from "react-router-dom";
 import { CheckoutContext } from "../context/CheckoutContext";
-import { PayPalButtons } from "@paypal/react-paypal-js";
+import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import Navbar from "../components/Navbar";
 import Loader from "../components/Loader";
 import AlertBox from "../components/AlertBox";
-import { usePayPalScriptReducer } from "@paypal/react-paypal-js";
 
 const SingleOrder = () => {
 	const { id } = useParams();
-	// const [sdkReady, setSdkReady] = useState(false);
 	const {
 		order,
 		getOrderDetails,
@@ -21,6 +19,8 @@ const SingleOrder = () => {
 		errorPay,
 	} = useContext(CheckoutContext);
 	const [{ isPending }] = usePayPalScriptReducer();
+	const history = useHistory();
+	const localLogin = JSON.parse(localStorage.getItem("login"));
 
 	useEffect(() => {
 		if (!order || !order._id || successPay) {
@@ -61,9 +61,14 @@ const SingleOrder = () => {
 				email_address: details.payer.email_address,
 			};
 			payOrder(order, paymentResult);
-			console.log(details);
 		});
 	};
+
+	const checkLogin = () => {
+		if (!JSON.parse(localStorage.getItem("login"))) history.push(`/login`);
+	};
+
+	if (!localLogin) return <Redirect to="/login" />;
 
 	if (loading) return <Loader />;
 
@@ -122,7 +127,7 @@ const SingleOrder = () => {
 							const { id, img, title, total } = item;
 							return (
 								<div className="place-order-cart-item" key={id}>
-									<div className="place-order-cart-item-inner-wrap">
+									<div className="place-order-cart-item-inner-wrap place-order-cart-item-img-wrap">
 										<img
 											src={img}
 											alt={title}
@@ -193,6 +198,7 @@ const SingleOrder = () => {
 											createOrder={createOrder}
 											onApprove={successPaymentHandler}
 											onError={(err) => console.log(err)}
+											onClick={checkLogin}
 										/>
 									</>
 								)}

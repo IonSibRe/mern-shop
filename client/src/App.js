@@ -12,7 +12,7 @@ import {
 	Profile,
 	Error,
 } from "./pages";
-import { HomeSlidersProvider } from "./context/HomeSlidersContext";
+import { SlidersProvider } from "./context/SlidersContext";
 import "./scss/main.scss";
 import ShippingAddress from "./pages/ShippingAddress";
 import Payment from "./pages/Payment";
@@ -24,9 +24,9 @@ const App = () => {
 		<Router>
 			<Switch>
 				<Route exact path="/">
-					<HomeSlidersProvider>
+					<SlidersProvider>
 						<Home />
-					</HomeSlidersProvider>
+					</SlidersProvider>
 				</Route>
 				<Route path="/about">
 					<About />

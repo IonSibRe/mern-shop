@@ -37,7 +37,7 @@ const ProductsDisplay = ({ products }) => {
 							<button
 								disabled={inCart}
 								className={`product-add-btn ${
-									inCart && "btn-disabled"
+									inCart && "btn-disabled-bg"
 								}`}
 								onClick={() =>
 									addToCart(_id, title, price, img)

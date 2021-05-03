@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { CartContext } from "../context/CartContext";
 import { CheckoutContext } from "../context/CheckoutContext";
@@ -25,6 +25,8 @@ const PlaceOrder = () => {
 	const { cart } = useContext(CartContext);
 
 	if (!paymentMethod) history.push("/payment");
+
+	const localLogin = JSON.parse(localStorage.getItem("login"));
 
 	// Prices
 	const itemsPrice = cart.reduce(
@@ -63,6 +65,7 @@ const PlaceOrder = () => {
 
 	return (
 		<>
+			{!localLogin && <Redirect to="/login" />}
 			<Navbar />
 			<CheckoutSteps stepOne stepTwo stepThree stepFour />
 			{loading ? (
@@ -169,7 +172,7 @@ const PlaceOrder = () => {
 								<button
 									className={`place-order-summary-submit-btn ${
 										reqItems.orderItems.length === 0 &&
-										"btn-disabled"
+										"btn-disabled-bg"
 									}`}
 									onClick={placeOrderHandler}
 									disabled={reqItems.orderItems.length === 0}

@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { HomeSlidersContext } from "../../context/HomeSlidersContext";
+import { SlidersContext } from "../../context/SlidersContext";
 import BestSellersItem from "./BestSellersItem";
 
 const BestSellersRow = ({ data, row, rowCount }) => {
-	const { filterRow } = useContext(HomeSlidersContext);
+	const { filterRow } = useContext(SlidersContext);
 	const displayData = filterRow(data, row, rowCount);
 
 	return (
