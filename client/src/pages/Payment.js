@@ -60,7 +60,7 @@ const Payment = () => {
 								name="paymentMethod"
 								id="stripe"
 								className="payment-method-input"
-								value="Stripe"
+								value="PayPal"
 								required
 								onChange={(e) =>
 									setPaymentMethod(e.target.value)

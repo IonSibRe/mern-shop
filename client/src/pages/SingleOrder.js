@@ -72,7 +72,7 @@ const SingleOrder = () => {
 
 	if (loading) return <Loader />;
 
-	if (error) return <AlertBox />;
+	if (error) return <AlertBox success={false} msg={error} />;
 
 	return (
 		<>
