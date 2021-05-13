@@ -105,6 +105,7 @@ const PlaceOrder = () => {
 								</h2>
 								{cart.map((item) => {
 									const { id, img, title, total } = item;
+									const numTotal = parseInt(total);
 									return (
 										<div
 											className="place-order-cart-item"
@@ -124,7 +125,7 @@ const PlaceOrder = () => {
 											</div>
 											<div className="place-order-cart-item-inner-wrap">
 												<h4 className="place-order-cart-item-text place-order-cart-item-price-text">
-													${total.toFixed(2)}
+													${numTotal.toFixed(2)}
 												</h4>
 											</div>
 										</div>
